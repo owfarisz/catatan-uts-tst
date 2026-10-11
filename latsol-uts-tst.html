@@ -365,6 +365,53 @@ nav.tabs button[hidden]{display:none}
 .why .wl ul{margin:.3em 0 0;padding-left:1.15em}
 .why .wl li{margin:.3em 0}
 .why .wl li.me>b:first-child{color:var(--bad)}
+
+/* ===== penyesuaian layar kecil (HP) ===== */
+.sx{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sx::before,.tw.ov::before{content:"\2194  Geser ke samping";display:block;position:sticky;left:0;width:max-content;font-size:.7rem;font-weight:600;color:var(--blue2);background:var(--tint);border-radius:99px;padding:1px 9px;margin:0 0 5px}
+.tw.ov::before{content:"\2194  Geser tabel ke samping"}
+@media (hover:none){.ans .cover{font-size:0}.ans .cover::after{content:"Ketuk untuk membuka jawaban";font-size:.85rem}}
+nav.tabs.more-r::after,nav.tabs.more-l::before{content:"";position:absolute;top:0;bottom:1px;width:34px;pointer-events:none;z-index:2}
+nav.tabs.more-r::after{right:0;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 70%)}
+nav.tabs.more-l::before{left:0;background:linear-gradient(270deg,rgba(255,255,255,0),#fff 70%)}
+@media (max-width:640px){
+  .top{padding:14px 14px 11px}
+  .top .wrap{gap:9px}
+  .top .tag{font-size:.6rem;padding:2px 8px}
+  .top h1{font-size:1.1rem;line-height:1.25}
+  .top .sub{font-size:.8rem;line-height:1.4;margin-top:3px}
+  .tools{gap:6px;width:100%}
+  .tools label,.tools .tbtn,.tools .prog{font-size:.75rem;padding:6px 9px;line-height:1.3}
+  .tools a.go{font-size:.8rem;padding:7px 12px}
+  .tools input{width:17px;height:17px;margin:0}
+  .hint{font-size:.72rem;line-height:1.35;opacity:.9}
+  .pkbar{padding:0 10px 10px}
+  .pkbar .wrap{flex-wrap:nowrap;gap:6px}
+  .pkbar button{flex:1 1 0;min-width:0;padding:7px 10px}
+  .pkbar button b{font-size:.9rem}
+  .pkbar button span{display:block;font-size:.66rem;line-height:1.3}
+  nav.tabs .wrap{padding:0 6px;scrollbar-width:none}
+  nav.tabs .wrap::-webkit-scrollbar{display:none}
+  nav.tabs button{font-size:.8rem;padding:11px 9px 9px}
+  table{font-size:.8rem}
+  th,td{padding:5px 7px}
+  .done{font-size:.76rem;padding:5px 10px}
+  .done input{width:18px;height:18px}
+  button.btn{min-height:36px;padding:7px 12px}
+  .opts button,.mcq .opts button{min-height:38px;padding:8px 12px}
+  .ctl{gap:6px;flex-wrap:wrap}
+  .widget{padding:10px 10px}
+  .tip{max-width:calc(100vw - 20px);font-size:.82rem}
+  pre{font-size:.76rem}
+  #toolBtn{right:10px;bottom:10px;font-size:.76rem;padding:8px 13px;opacity:.94}
+  #tool{right:8px;bottom:54px;width:calc(100vw - 16px);max-height:70vh}
+  body:has(#toolBtn){padding-bottom:58px}
+  body:has(.pkbar) .top .sub,body:has(.pkbar) .top .hint{display:none}
+  body:has(.pkbar) .top{padding-bottom:9px}
+  .tools .prog{flex:1 1 100%}
+  input[type=range]{width:100%;min-height:30px}
+  select{min-height:36px;max-width:100%}
+}
 </style>
 </head>
 <body>
@@ -2069,6 +2116,51 @@ window.LB_WHY = {"bo1": {"0": ["Terlalu sempit. Sistem tidak harus berupa perang
   T.tips();
 })();
 
+</script>
+
+<script>
+/* ===== penyesuaian layar kecil: diagram bisa digeser, tab aktif selalu terlihat ===== */
+(function () {
+  var mq = window.matchMedia('(max-width:640px)'), t = 0;
+  function fit() {
+    document.querySelectorAll('.tw').forEach(function (w) { if (w.clientWidth) w.classList.toggle('ov', w.scrollWidth > w.clientWidth + 2); });
+    if (!mq.matches) return;
+    document.querySelectorAll('svg[viewBox]').forEach(function (s) {
+      if (s.dataset.mfit || s.closest('button,.tip,nav')) return;
+      var vb = s.viewBox.baseVal, p = s.parentElement; if (!vb || vb.width < 380 || !p || !p.clientWidth) return;
+      s.dataset.mfit = '1';
+      if (p.clientWidth < vb.width * 0.8) { s.style.minWidth = Math.round(vb.width * 0.9) + 'px'; s.style.maxWidth = 'none'; p.classList.add('sx'); }
+    });
+  }
+  function later() { clearTimeout(t); t = setTimeout(fit, 80); }
+  function nav() {
+    var n = document.querySelector('nav.tabs'), w = n && n.querySelector('.wrap'); if (!w) return;
+    function edge() { n.classList.toggle('more-l', w.scrollLeft > 4); n.classList.toggle('more-r', w.scrollLeft + w.clientWidth < w.scrollWidth - 4); }
+    function center() { var b = w.querySelector('button[aria-selected="true"]'); if (b && !b.hidden) w.scrollLeft = b.offsetLeft - (w.clientWidth - b.offsetWidth) / 2; edge(); }
+    w.addEventListener('scroll', edge, { passive: true });
+    document.addEventListener('click', function (e) { if (e.target.closest('nav.tabs button,.pkbar button,.toc a,a[href^="#"]')) setTimeout(center, 60); });
+    window.addEventListener('resize', edge); window.addEventListener('hashchange', function () { setTimeout(center, 60); });
+    setTimeout(center, 200);
+  }
+  function start() {
+    nav(); fit();
+    document.addEventListener('toggle', later, true);
+    document.addEventListener('click', later, true);
+    document.addEventListener('click', function (e) {
+      if (!mq.matches || e.target.closest('svg')) return; var box = e.target.closest('.widget,.stp,[data-step]'); if (!box) return;
+      setTimeout(function () {
+        box.querySelectorAll('.sx').forEach(function (sx) {
+          var el = sx.querySelector('.dn.hot,.de.hot,.dn.sel,.de.sel'); if (!el) return;
+          var r = el.getBoundingClientRect(), c = sx.getBoundingClientRect();
+          if (r.left < c.left + 8 || r.right > c.right - 8) sx.scrollLeft += (r.left + r.width / 2) - (c.left + c.width / 2);
+        });
+      }, 160);
+    });
+    window.addEventListener('resize', later);
+    if (window.MutationObserver) new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'complete') setTimeout(start, 50); else window.addEventListener('load', function () { setTimeout(start, 50); });
+})();
 </script>
 </body>
 </html>
