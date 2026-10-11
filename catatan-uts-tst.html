@@ -360,6 +360,11 @@ nav.tabs button[hidden]{display:none}
 .obj .mcq.tf .opts button{flex:0 0 110px;text-align:center;font-weight:600}
 .obj .mcq .kind{font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue2)}
 .obj .mcq.ok{border-color:#BFE3CF}.obj .mcq.no{border-color:#F0C4BF}
+
+.why .wl{margin-top:7px;padding-top:6px;border-top:1px dashed var(--line)}
+.why .wl ul{margin:.3em 0 0;padding-left:1.15em}
+.why .wl li{margin:.3em 0}
+.why .wl li.me>b:first-child{color:var(--bad)}
 </style>
 </head>
 <body>
@@ -579,7 +584,7 @@ nav.tabs button[hidden]{display:none}
 <div class="widget" data-pick="komponen"><div class="wt">Klik tiap komponen untuk melihat apa yang disatukan</div></div>
 <div class="callout key"><b>Cara mengingat.</b> Tanyakan empat hal pada dua unit yang mau digabung: apakah <b>alur kerjanya</b> nyambung (proses), apakah <b>datanya</b> sama arti dan formatnya (data), apakah <b>sistemnya</b> bisa saling bicara (teknologi), dan apakah <b>orang dan aturannya</b> sepakat (organisasi). Kalau salah satu belum, integrasinya belum utuh.</div>
 <div class="mcq"><p>Dua rumah sakit sudah menyambungkan sistemnya lewat API, format datanya sudah sama, dan alur rujukannya sudah disepakati. Tetapi tiap rumah sakit punya aturan berbeda tentang siapa yang boleh melihat rekam medis, sehingga datanya tetap tidak bisa dipakai. Komponen integrasi mana yang belum beres?</p>
-<div class="opts"><button>Proses</button><button>Data</button><button>Teknologi</button><button data-ok>Organisasi</button></div>
+<div class="opts"><button data-why="Alur rujukannya sudah disepakati, jadi prosesnya sudah beres.">Proses</button><button data-why="Format datanya sudah sama, jadi datanya sudah beres.">Data</button><button data-why="Sistemnya sudah tersambung lewat API, jadi teknologinya sudah beres.">Teknologi</button><button data-ok>Organisasi</button></div>
 <div class="why" hidden>Aturan hak akses dan kebijakan adalah urusan organisasi. Teknologi (API), data (format), dan proses (alur rujukan) sudah beres.</div></div>
 </div>
 </details>
@@ -684,10 +689,10 @@ nav.tabs button[hidden]{display:none}
 <p>Di dunia nyata, open standard dan proprietary standard hidup berdampingan. Yang menerjemahkan di antara keduanya (atau antar dua proprietary) punya lima nama. Bedanya tipis, jadi lihat kata kuncinya.</p>
 <div class="widget" data-pick="hub"><div class="wt">Klik tiap komponen</div></div>
 <div class="mcq"><p>Sebuah platform integrasi menyediakan komponen jadi bernama "SAP IDoc Connector" yang tinggal dipasang untuk menyambung ke SAP. Ini termasuk apa?</p>
-<div class="opts"><button>Gateway</button><button>Protocol translator</button><button data-ok>Connector</button><button>Middleware</button></div>
+<div class="opts"><button data-why="Gateway adalah gerbang komunikasi umum antara dua sistem, bukan komponen jadi untuk satu sistem tertentu.">Gateway</button><button data-why="Tugasnya khusus menerjemahkan satu protokol ke protokol lain. Soal tidak menyebut penerjemahan protokol.">Protocol translator</button><button data-ok>Connector</button><button data-why="Middleware adalah lapisan perantara yang luas (transformasi dan orkestrasi). Komponen ini hanya satu sambungan siap pakai ke SAP.">Middleware</button></div>
 <div class="why" hidden>Kata kuncinya "komponen yang telah disediakan" untuk menyambungkan <b>platform integrasi</b> dengan <b>sistem tertentu</b>. Itu definisi connector di slide.</div></div>
 <div class="mcq"><p>Sensor pabrik bicara MQTT, sedangkan dashboard hanya mengerti HTTP. Komponen yang tugasnya khusus mengubah MQTT menjadi HTTP paling tepat disebut apa?</p>
-<div class="opts"><button>Adapter</button><button data-ok>Protocol translator</button><button>Connector</button></div>
+<div class="opts"><button data-why="Tidak salah total, tetapi kurang spesifik. Adapter mengubah format, protokol, atau antarmuka. Karena yang diubah khusus protokol, protocol translator lebih tepat.">Adapter</button><button data-ok>Protocol translator</button><button data-why="Connector adalah komponen siap pakai untuk menyambung ke satu sistem tertentu, bukan penerjemah protokol.">Connector</button></div>
 <div class="why" hidden>Yang diterjemahkan adalah <b>protokol komunikasi</b> (MQTT ke HTTP), jadi protocol translator. Adapter lebih umum: mengubah format, protokol, atau antarmuka. Kalau di ujian hanya ada pilihan adapter, itu masih bisa dibenarkan, tetapi protocol translator lebih spesifik.</div></div>
 </div>
 </details>
@@ -839,7 +844,7 @@ nav.tabs button[hidden]{display:none}
   <div class="box sky"><h4>Dua obatnya</h4><ul class="small"><li><b>Ubiquitous language:</b> di dalam satu konteks, satu istilah hanya punya satu arti, dan dipakai sama dari rapat sampai nama tabel.</li><li><b>Bounded context:</b> kalau satu kata memang punya arti berbeda di bagian lain, pisahkan modelnya. "Mahasiswa" di Akademik dan "Mahasiswa" di Keuangan menjadi dua model.</li></ul></div>
 </div>
 <div class="mcq"><p>Di sebuah bank, tim kredit memakai kata "nasabah" untuk orang yang punya pinjaman, sedangkan tim pemasaran memakainya untuk siapa pun yang pernah mengisi formulir. Laporan "jumlah nasabah" dari kedua tim selalu berbeda. Solusi DDD yang paling tepat adalah...</p>
-<div class="opts"><button>Memaksa satu tabel nasabah untuk seluruh bank</button><button data-ok>Memisahkan dua bounded context dan menegaskan arti istilah di tiap konteks</button><button>Mengganti database yang dipakai</button></div>
+<div class="opts"><button data-why="Kedua arti 'nasabah' sama-sama sah. Memaksa satu model membuat model besar yang rumit dan tetap tidak cocok untuk salah satu tim.">Memaksa satu tabel nasabah untuk seluruh bank</button><button data-ok>Memisahkan dua bounded context dan menegaskan arti istilah di tiap konteks</button><button data-why="Masalahnya di arti istilah, bukan di teknologi. Database baru tidak mengubah arti kata.">Mengganti database yang dipakai</button></div>
 <div class="why" hidden>Kata yang sama punya dua arti yang sah di dua bagian. Tiap bagian dijadikan bounded context dengan modelnya sendiri, dan arti "nasabah" ditegaskan lewat ubiquitous language di tiap konteks. Memaksa satu model justru membuat model besar yang rumit.</div></div>
 </div>
 </details>
@@ -940,10 +945,10 @@ nav.tabs button[hidden]{display:none}
 <tr><td><b>Microservices</b></td><td>Service kecil yang mandiri dan di-deploy sendiri-sendiri.</td><td>Sistem besar dengan banyak tim.</td></tr>
 </tbody></table></div>
 <div class="mcq"><p>Sebuah tim ingin logika bisnisnya tidak ikut berubah saat database diganti dari MySQL ke PostgreSQL atau saat REST diganti gRPC. Gaya mana yang paling sesuai?</p>
-<div class="opts"><button>Layered</button><button data-ok>Hexagonal</button><button>Pipe and Filter</button><button>Monolithic</button></div>
+<div class="opts"><button data-why="Di layered, lapisan logika bisnis bergantung pada lapisan data di bawahnya. Mengganti database masih bisa merembet ke logika bisnis. Itulah masalah yang ingin diatasi hexagonal.">Layered</button><button data-ok>Hexagonal</button><button data-why="Pipe and filter untuk mengalirkan data lewat tahap-tahap pengolahan, bukan untuk melindungi logika bisnis dari teknologi.">Pipe and Filter</button><button data-why="Monolithic hanya berarti semuanya satu unit. Ia tidak memberi pemisahan antara logika bisnis dan teknologi.">Monolithic</button></div>
 <div class="why" hidden>Hexagonal menaruh domain bisnis di pusat dan menganggap database, REST API, RabbitMQ, email, dan framework sebagai detail teknis yang bisa diganti kapan saja. Gaya ini lahir justru untuk mengatasi masalah layered, yaitu logika bisnis yang terlalu bergantung pada database dan framework.</div></div>
 <div class="mcq"><p>Data sensor mentah harus dibersihkan, lalu dinormalkan, lalu dihitung rata-ratanya, lalu disimpan. Tiap tahap tidak perlu tahu tahap lain. Gaya mana yang paling pas?</p>
-<div class="opts"><button>Client-Server</button><button>Event-Driven</button><button data-ok>Pipe and Filter</button></div>
+<div class="opts"><button data-why="Client-server memisahkan peminta dan penyedia layanan. Tidak ada gagasan tahap pengolahan berurutan.">Client-Server</button><button data-why="Event-driven cocok saat banyak pihak bereaksi terhadap suatu kejadian. Di sini datanya mengalir lurus dari satu tahap ke tahap berikutnya.">Event-Driven</button><button data-ok>Pipe and Filter</button></div>
 <div class="why" hidden>Pemrosesan data bertahap adalah ciri pipe and filter. Tiap tahap adalah filter yang menerima masukan, memproses, dan menghasilkan keluaran tanpa perlu tahu tahap sebelum atau sesudahnya. Pipe hanya mengalirkan data.</div></div>
 </div>
 </details>
@@ -979,7 +984,7 @@ nav.tabs button[hidden]{display:none}
 </div>
 <p class="small">Analogi bangunan: architectural style adalah bentuk gedungnya (rumah panggung, ruko, apartemen). Design pattern adalah cara memasang engsel pintu. Uraian empat tingkat lengkapnya ada di kartu berikutnya.</p>
 <div class="mcq"><p>Tim ingin menguji aturan diskon tanpa menyalakan database, lalu suatu saat mengganti REST dengan gRPC tanpa menyentuh aturan itu. Gaya dan mekanisme yang memungkinkan hal ini adalah...</p>
-<div class="opts"><button>Layered, lewat separation of concerns</button><button data-ok>Hexagonal, lewat Ports &amp; Adapters</button><button>Pipe &amp; Filter, lewat pipe</button><button>Monolithic, lewat satu unit deployment</button></div>
+<div class="opts"><button data-why="Layered memang memisahkan urusan, tetapi lapisan logika tetap bergantung pada lapisan data di bawahnya. Aturan diskon sulit diuji tanpa database, dan pergantian teknologi masih bisa merembet ke atas.">Layered, lewat separation of concerns</button><button data-ok>Hexagonal, lewat Ports &amp; Adapters</button><button data-why="Pipe hanya mengalirkan data dari satu filter ke filter berikutnya. Gaya ini untuk pengolahan data bertahap, bukan untuk mengisolasi aturan bisnis dari database atau REST.">Pipe &amp; Filter, lewat pipe</button><button data-why="Satu unit deployment justru membuat semuanya menyatu. Tidak ada mekanisme untuk melepas database atau menukar REST tanpa menyentuh bagian lain.">Monolithic, lewat satu unit deployment</button></div>
 <div class="why" hidden>Hexagonal mengisolasi domain inti dari teknologi. Domain hanya mengenal port. Database dan REST adalah adapter yang bisa dilepas (untuk pengujian) atau diganti (REST ke gRPC).</div></div>
 </div>
 </details>
@@ -1121,7 +1126,7 @@ nav.tabs button[hidden]{display:none}
 <tr><td>Pengembangan tim</td><td>Memudahkan koordinasi tim besar dan proyek multi-vendor.</td><td>Butuh standar dan disiplin dokumentasi yang konsisten.</td></tr>
 </tbody></table></div>
 <div class="mcq"><p>Kamu ingin menunjukkan urutan pesan saat aplikasi mobile memanggil API pembayaran, lalu API itu memanggil bank. Diagram UML mana yang paling cocok?</p>
-<div class="opts"><button>Use case diagram</button><button>Class diagram</button><button data-ok>Sequence diagram</button></div>
+<div class="opts"><button data-why="Use case hanya menunjukkan siapa bisa memakai fungsi apa. Tidak ada urutan pesan.">Use case diagram</button><button data-why="Class diagram menunjukkan struktur (kelas, atribut, relasi), bukan urutan interaksi.">Class diagram</button><button data-ok>Sequence diagram</button></div>
 <div class="why" hidden>Kata kuncinya "urutan pesan" antar pihak berdasarkan waktu. Itu fungsi sequence diagram, dan slide menyebutnya cocok untuk desain API dan integrasi sistem.</div></div>
 </div>
 </details>
@@ -1213,7 +1218,7 @@ nav.tabs button[hidden]{display:none}
 <div class="widget" data-step="sua"><div class="wt">Bandingkan IPO dengan smart system pada kasus kelas pintar</div></div>
 <div class="callout key"><b>Smart system bukan sistem yang berdiri sendiri.</b> Ia adalah <b>lapisan kecerdasan</b> yang bisa dipasang ke sistem apa pun (transportasi, kesehatan, kampus, kota). Ketika banyak sistem diberi lapisan ini lalu disambungkan, hasilnya disebut <span class="hl">system of systems</span>. Kunci utamanya: <b>integrasi</b>.</div>
 <div class="mcq"><p>Termostat membaca suhu 31°C, menyimpulkan "ruangan terlalu panas dan ada orang", lalu menyalakan pendingin. Bagian "menyimpulkan" termasuk tahap apa?</p>
-<div class="opts"><button>Sensing</button><button>Processing</button><button data-ok>Understanding</button><button>Acting</button></div>
+<div class="opts"><button data-why="Sensing adalah bagian 'membaca suhu 31°C'.">Sensing</button><button data-why="Processing merapikan dan menghitung bacaan. Hasilnya masih angka, belum kesimpulan.">Processing</button><button data-ok>Understanding</button><button data-why="Acting adalah bagian 'menyalakan pendingin'.">Acting</button></div>
 <div class="why" hidden>Membaca suhu adalah sensing. Merapikan dan menghitung bacaan adalah processing. Mengubah angka menjadi makna ("terlalu panas dan ada orang") adalah understanding. Menyalakan pendingin adalah acting.</div></div>
 </div>
 </details>
@@ -1523,7 +1528,7 @@ nav.tabs button[hidden]{display:none}
 <li>Karena kedua pihak tidak tersambung langsung ke database, data harus diubah menjadi <b>teks terstruktur</b> yang bisa dipahami bahasa pemrograman apa pun. Inilah peran <b>representasi data</b>, topik tab 7.</li>
 </ul>
 <div class="mcq"><p>Aplikasi kasir ingin menampilkan saldo pelanggan. Menurut prinsip di slide, cara yang benar adalah...</p>
-<div class="opts"><button>Menyambung langsung ke database layanan dompet</button><button data-ok>Memanggil API layanan dompet</button><button>Menyalin tabel saldo ke database kasir tiap menit</button></div>
+<div class="opts"><button data-why="Membuat dua layanan terikat erat (tightly coupled) dan melewati aturan keamanan layanan dompet. Slide: pengguna tidak mengakses database secara langsung.">Menyambung langsung ke database layanan dompet</button><button data-ok>Memanggil API layanan dompet</button><button data-why="Datanya bisa basi sampai satu menit, ada dua salinan yang bisa berbeda, dan kasir tetap bergantung pada struktur tabel milik layanan lain.">Menyalin tabel saldo ke database kasir tiap menit</button></div>
 <div class="why" hidden>Slide menegaskan pengguna tidak mengakses database secara langsung, melainkan lewat API. Akses langsung ke database membuat dua layanan terikat erat dan melewati aturan keamanan layanan dompet.</div></div>
 </div>
 </details>
@@ -2088,10 +2093,10 @@ nav.tabs button[hidden]{display:none}
 /* ===== Glosarium TST: [[istilah, variasi...], arti, contoh] ===== */
 window.TST_GLOSS = [
   [['system of systems'], 'Sistem besar yang isinya beberapa sistem lain yang masing-masing bisa jalan sendiri, lalu disambungkan supaya menghasilkan kemampuan baru.', 'Smart city: sistem lalu lintas, sistem listrik, dan sistem darurat digabung.'],
-  [['smart system'], 'Sistem yang tidak hanya memproses data, tetapi merasakan lingkungan (sensing), memahami keadaan (understanding), lalu bertindak (acting).', 'AC yang membaca suhu, menyimpulkan ruangan kosong, lalu mati sendiri.'],
+  [['smart system'], 'Sistem yang tidak hanya memproses data, tetapi merasakan lingkungan (sensing), mengolah datanya (processing), memahami keadaan (understanding), lalu bertindak (acting).', 'AC yang membaca suhu, menyimpulkan ruangan kosong, lalu mati sendiri.'],
   [['sensing'], 'Tahap pertama smart system: mengambil data dari lingkungan lewat sensor. Di slide disebut "Iqro" (membaca).', 'Sensor ultrasonik membaca jarak.'],
-  [['understanding'], 'Tahap kedua smart system: mengolah data sensor sampai tahu apa yang sedang terjadi. Di slide disebut "Tabayyun" (memeriksa kebenaran).', 'AI menyimpulkan "ruangan penuh".'],
-  [['acting'], 'Tahap ketiga smart system: melakukan tindakan ke lingkungan lewat aktuator. Di slide disebut "Bertindak".', 'Lengan robot bergerak, lampu menyala.'],
+  [['understanding'], 'Tahap ketiga smart system menurut kisi-kisi (tahap kedua di slide): menarik makna dari data yang sudah diolah sampai tahu apa yang sedang terjadi. Di slide disebut "Tabayyun" (memeriksa kebenaran).', 'AI menyimpulkan "ruangan penuh".'],
+  [['acting'], 'Tahap terakhir smart system (keempat menurut kisi-kisi, ketiga di slide): melakukan tindakan ke lingkungan lewat aktuator. Di slide disebut "Bertindak".', 'Lengan robot bergerak, lampu menyala.'],
   [['business driven integration', 'business-driven integration', 'business driven', 'business-driven'], 'Integrasi yang berangkat dari masalah bisnis. Masalahnya ada dulu, teknologi dicari untuk menyelesaikannya.', 'Data stok tidak nyambung dengan data pembelian, lalu dipasang ERP.'],
   [['technology driven integration', 'technology-driven integration', 'technology driven', 'technology-driven'], 'Integrasi yang berangkat dari teknologi. Teknologinya digabung dulu, lalu dari situ muncul ide bisnis baru.', 'GPS + pembayaran digital digabung, lahirlah ojek online.'],
   [['system integrator'], 'Pihak yang memastikan teknologi, data, proses bisnis, organisasi, dan manusia bisa bekerja sebagai satu kesatuan. Bukan sekadar pembuat API.', 'Menjawab "bagaimana semuanya terintegrasi".'],
@@ -2106,7 +2111,7 @@ window.TST_GLOSS = [
   [['batch'], 'Data dikumpulkan dulu, lalu diproses atau dikirim sekaligus pada waktu tertentu. Lawannya real-time.', 'Rekap penjualan dikirim tiap tengah malam.'],
   [['API Gateway'], 'Satu pintu masuk untuk banyak API di belakangnya. Mengurus rute, keamanan, dan pembatasan akses.', ''],
   [['Enterprise Service Bus', 'ESB'], 'Middleware pusat pada SOA. Semua service bicara lewat "bus" ini, dan bus yang mengurus rute, penerjemahan format, dan orkestrasi.', ''],
-  [['message broker', 'event broker'], 'Perantara pesan. Pengirim menaruh pesan di broker, penerima mengambilnya dari broker, jadi keduanya tidak perlu saling kenal.', 'Kafka, RabbitMQ.'],
+  [['message broker', 'event broker', 'broker'], 'Sebagai nama architectural pattern, Broker berarti gagasan yang sama: komponen tidak saling bicara langsung, melainkan lewat perantara. Perantara pesan. Pengirim menaruh pesan di broker, penerima mengambilnya dari broker, jadi keduanya tidak perlu saling kenal.', 'Kafka, RabbitMQ.'],
   [['iPaaS'], 'Integration Platform as a Service: platform integrasi siap pakai di cloud.', 'MuleSoft, Boomi, Informatica.'],
   [['ETL', 'ETL/ELT'], 'Extract, Transform, Load: ambil data dari sumber, ubah bentuknya, lalu muat ke tujuan. Pada ELT, dimuat dulu baru diubah.', ''],
   [['event streaming'], 'Aliran kejadian yang dikirim terus-menerus dan langsung diproses saat datang.', 'Kafka.'],
@@ -2262,7 +2267,144 @@ window.TST_GLOSS = [
   [['decoupled'], 'Terpisah: dua pihak tidak saling bergantung langsung.', 'Publisher dan subscriber hanya sama-sama mengenal broker.'],
   [['prefix'], 'Awalan pendek di depan nama elemen XML yang menunjukkan namespace-nya.', 'nsb:id'],
   [['heterogen'], 'Beraneka ragam: sistem-sistem yang bahasa, database, atau platformnya berbeda.', ''],
-  [['CodeIgniter', 'CI4'], 'Framework PHP yang memakai pola MVC. Dipakai di hands-on kuliah ini untuk membuat API.', '']
+  [['CodeIgniter', 'CI4'], 'Framework PHP yang memakai pola MVC. Dipakai di hands-on kuliah ini untuk membuat API.', ''],
+  /* tambahan: istilah teknis yang sebelumnya belum punya penjelasan */
+  [["Factory"], "Design pattern: pembuatan objek diserahkan ke satu bagian khusus (si 'pabrik'), sehingga kode pemakai tidak perlu tahu kelas persis yang dibuat.", "Kode cukup meminta 'buatkan notifikasi', pabrik yang memutuskan membuat notifikasi email atau SMS."],
+  [["Observer"], "Design pattern: satu objek menyimpan daftar 'pengamat' dan memberi tahu semuanya secara otomatis setiap kali keadaannya berubah.", "Harga saham berubah, semua layar yang menampilkannya ikut diperbarui. Ini versi kecil dari publish dan subscribe."],
+  [["Strategy"], "Design pattern: beberapa cara mengerjakan hal yang sama dibungkus menjadi objek yang bisa ditukar-tukar saat program berjalan.", "Ongkos kirim dihitung dengan cara 'reguler', 'kilat', atau 'gratis'. Cara hitungnya bisa diganti tanpa mengubah kode pemesanan."],
+  [["CQRS"], "Command Query Responsibility Segregation. Architectural pattern yang memisahkan bagian yang mengubah data (command) dari bagian yang membaca data (query).", "Model untuk menulis pesanan dipisah dari model untuk menampilkan laporan pesanan."],
+  [["list comprehension"], "Cara khas Python menulis pembuatan daftar dalam satu baris. Contoh language idiom, karena hanya ada di bahasa tertentu.", "[x * 2 for x in angka]"],
+  [["using statement"], "Cara khas C# untuk memakai sumber daya (berkas, koneksi) yang otomatis ditutup setelah selesai. Contoh language idiom."],
+  [["external entity", "entitas luar"], "Simbol DFD: pihak di luar sistem yang memberi data ke sistem atau menerima data darinya. Digambar persegi panjang.", "Mahasiswa pada sistem akademik."],
+  [["data store"], "Simbol DFD: tempat data disimpan untuk dipakai lagi nanti. Digambar dua garis sejajar.", "Tabel mahasiswa."],
+  [["data flow", "aliran data"], "Simbol DFD: panah berlabel yang menunjukkan data apa yang berpindah dan ke mana arahnya.", "Panah berlabel NIM."],
+  [["entities"], "Blok bangunan tactical design: objek yang punya identitas tetap walau datanya berubah.", "Mahasiswa dengan NIM tertentu tetap mahasiswa yang sama walau alamatnya berganti."],
+  [["value objects", "value object"], "Blok bangunan tactical design: objek yang hanya dikenali dari nilainya dan tidak punya identitas sendiri.", "Alamat, tanggal, atau jumlah uang."],
+  [["aggregates", "aggregate"], "Blok bangunan tactical design: sekelompok objek yang diperlakukan sebagai satu kesatuan dan diubah lewat satu pintu.", "Pesanan beserta baris-baris barangnya."],
+  [["repositories", "repository"], "Blok bangunan tactical design: bagian yang mengurus penyimpanan dan pengambilan objek, sehingga domain tidak perlu tahu soal database."],
+  [["factories"], "Blok bangunan tactical design: bagian yang mengurus pembuatan objek yang rumit."],
+  [["Eric Evans"], "Penulis buku Domain-Driven Design (2003), tempat istilah DDD, bounded context, dan ubiquitous language berasal."],
+  [["Alistair Cockburn"], "Pencetus hexagonal architecture, yang ia namai juga Ports & Adapters."],
+  [["The Three Amigos"], "Julukan tiga penggagas UML: Grady Booch, James Rumbaugh, dan Ivar Jacobson."],
+  [["Von Neumann"], "John von Neumann, perumus arsitektur komputer yang menyimpan program dan data di memori yang sama."],
+  [["ISO/IEC/IEEE 15288"], "Standar internasional tentang proses siklus hidup sistem (systems engineering). Slide mengutip definisi 'sistem' dari sini."],
+  [["INCOSE"], "International Council on Systems Engineering, organisasi profesi rekayasa sistem. Definisi sistemnya paling lengkap karena menyebut orang dan proses."],
+  [["TOGAF"], "The Open Group Architecture Framework: kerangka kerja terbuka untuk menyusun enterprise architecture."],
+  [["ArchiMate"], "Bahasa gambar standar untuk memodelkan enterprise architecture (lapisan bisnis, aplikasi, teknologi)."],
+  [["OpenAPI"], "Standar terbuka untuk menuliskan deskripsi sebuah REST API: alamatnya, data yang dikirim, dan bentuk balasannya."],
+  [["ISO 27001"], "Standar internasional untuk sistem manajemen keamanan informasi."],
+  [["DAMA-DMBOK"], "Buku panduan tata kelola data (Data Management Body of Knowledge) dari organisasi DAMA."],
+  [["NIST"], "National Institute of Standards and Technology, lembaga standar Amerika Serikat. Kerangka cloud-nya sering dijadikan acuan."],
+  [["MQTT"], "Protokol pesan yang sangat ringan untuk perangkat IoT, memakai pola publish dan subscribe.", "Sensor suhu mengirim bacaan ke broker MQTT."],
+  [["CoAP"], "Constrained Application Protocol: protokol ringan mirip HTTP untuk perangkat IoT berdaya kecil."],
+  [["AMQP"], "Advanced Message Queuing Protocol: protokol terbuka untuk antrean pesan. Dipakai RabbitMQ."],
+  [["OAuth 2.0", "OAuth2", "OAuth"], "Standar terbuka untuk otorisasi: memberi aplikasi izin terbatas mengakses data tanpa menyerahkan kata sandi.", "Tombol 'Masuk dengan Google'."],
+  [["OpenID Connect"], "Lapisan identitas di atas OAuth 2.0. Dipakai untuk memastikan siapa penggunanya (login)."],
+  [["SAML"], "Security Assertion Markup Language: standar berbasis XML untuk Single Sign-On di lingkungan perusahaan."],
+  [["SMTP", "IMAP", "POP3"], "Protokol standar email. SMTP untuk mengirim, IMAP dan POP3 untuk mengambil email."],
+  [["ANSI SQL"], "Versi baku bahasa SQL yang ditetapkan lembaga standar. Termasuk open standard."],
+  [["T-SQL"], "Transact-SQL: perluasan SQL milik Microsoft untuk SQL Server. Termasuk proprietary."],
+  [["PL/SQL"], "Perluasan SQL milik Oracle yang menambah kemampuan pemrograman prosedural. Termasuk proprietary."],
+  [["SQL"], "Structured Query Language: bahasa untuk mengambil dan mengubah data di database relasional."],
+  [["MySQL", "PostgreSQL"], "Dua produk database relasional yang populer. Di contoh hexagonal dipakai untuk menunjukkan teknologi yang bisa ditukar."],
+  [["DynamoDB", "Cosmos DB"], "Layanan database cloud milik vendor (DynamoDB milik AWS, Cosmos DB milik Microsoft). API-nya proprietary."],
+  [["DWG"], "Format berkas gambar teknik milik Autodesk (AutoCAD). Proprietary."],
+  [["IDoc"], "Intermediate Document: format pertukaran data milik SAP. Proprietary."],
+  [["Siemens S7 Protocol", "Siemens S7"], "Protokol komunikasi untuk PLC buatan Siemens. Proprietary."],
+  [["Desigo"], "Sistem otomasi gedung milik Siemens. Proprietary."],
+  [["PLC"], "Programmable Logic Controller: komputer kecil tahan banting yang mengendalikan mesin di pabrik."],
+  [["SAP"], "Vendor perangkat lunak ERP besar. Banyak contoh standar proprietary di slide berasal dari SAP."],
+  [["ERP"], "Enterprise Resource Planning: satu sistem besar yang menyatukan keuangan, stok, pembelian, produksi, dan lainnya.", "SAP, Odoo."],
+  [["CRM"], "Customer Relationship Management: sistem pengelola data dan interaksi dengan pelanggan."],
+  [["SCM"], "Supply Chain Management: sistem pengelola rantai pasok dari pemasok sampai pelanggan."],
+  [["HRIS"], "Human Resource Information System: sistem informasi kepegawaian."],
+  [["HRM"], "Human Resource Management: pengelolaan kepegawaian. Contoh generic subdomain di kisi-kisi."],
+  [["Payroll"], "Penggajian. Contoh generic subdomain di kisi-kisi karena hampir semua organisasi butuh dan bisa membeli produk jadinya."],
+  [["MDM"], "Master Data Management: cara menjaga data induk (pelanggan, produk) tetap satu versi dan konsisten di semua sistem."],
+  [["Business Intelligence", "BI"], "Kegiatan dan alat untuk mengubah data perusahaan menjadi laporan dan dashboard bagi pengambil keputusan."],
+  [["data warehouse"], "Gudang data: tempat data dari banyak sistem dikumpulkan dan dirapikan khusus untuk analisis dan laporan."],
+  [["data lake"], "Tempat menyimpan data mentah dalam jumlah besar dan bentuk apa pun, sebelum diolah."],
+  [["in-memory database"], "Database yang menyimpan datanya di memori (RAM), sehingga sangat cepat.", "Redis."],
+  [["digital twin"], "Tiruan digital dari benda atau sistem nyata yang datanya terus diperbarui dari sensor, sehingga bisa dipantau dan disimulasikan."],
+  [["IoT"], "Internet of Things: benda fisik yang diberi sensor dan sambungan jaringan sehingga bisa mengirim data.", "Meteran listrik pintar."],
+  [["sensor"], "Alat yang mengubah keadaan fisik (suhu, cahaya, gerak) menjadi data."],
+  [["aktuator", "actuator"], "Alat yang mengubah perintah sistem menjadi tindakan fisik. Kebalikan sensor.", "Motor, katup, lampu."],
+  [["firmware"], "Perangkat lunak yang tertanam di dalam perangkat keras dan mengendalikannya langsung."],
+  [["cloud computing", "cloud"], "Memakai server, penyimpanan, dan layanan milik penyedia lewat internet, tanpa membeli mesinnya sendiri."],
+  [["edge"], "Edge computing: pengolahan data dilakukan di dekat sumbernya (di perangkat atau di lokasi), bukan di pusat data yang jauh."],
+  [["5G"], "Generasi kelima jaringan seluler: lebih cepat dan jedanya lebih kecil."],
+  [["zero trust"], "Prinsip keamanan: tidak ada yang otomatis dipercaya, tiap akses selalu diperiksa walau berasal dari dalam jaringan."],
+  [["IAM"], "Identity and Access Management: pengelolaan siapa penggunanya dan apa yang boleh ia akses."],
+  [["observability"], "Kemampuan melihat keadaan dalam sebuah sistem dari luar, lewat log, metrik, dan jejak permintaan."],
+  [["DevOps"], "Cara kerja yang menyatukan tim pengembang dan tim operasional supaya rilis lebih cepat dan lebih aman."],
+  [["CI/CD"], "Continuous Integration dan Continuous Delivery: kode yang baru ditulis otomatis diuji lalu otomatis dipasang."],
+  [["composable"], "Bisa dirakit: platform disusun dari komponen-komponen yang bisa dipasang dan diganti seperti balok."],
+  [["stream processing"], "Mengolah data langsung saat datanya mengalir masuk, bukan menunggu terkumpul dulu."],
+  [["business rules engine"], "Komponen yang menyimpan dan menjalankan aturan bisnis secara terpisah dari kode aplikasi."],
+  [["business rules", "aturan bisnis"], "Ketentuan yang berasal dari bisnisnya, bukan dari teknologinya.", "Mahasiswa tidak boleh mengambil lebih dari 24 SKS."],
+  [["chatbot"], "Program yang melayani percakapan dengan pengguna secara otomatis."],
+  [["mass production"], "Produksi massal: barang yang sama dibuat dalam jumlah besar."],
+  [["mass customization"], "Produksi dalam jumlah besar, tetapi tiap barang bisa disesuaikan dengan keinginan pembelinya."],
+  [["build-to-order"], "Barang baru dibuat setelah ada pesanan, bukan dibuat dulu lalu disimpan."],
+  [["hypercare"], "Masa pengawasan ketat tepat setelah sistem mulai dipakai di produksi."],
+  [["Keycloak", "Okta", "Auth0", "Microsoft Entra ID"], "Produk siap pakai untuk login dan Single Sign-On. Contoh solusi untuk generic subdomain."],
+  [["dynamic pricing"], "Harga yang berubah otomatis mengikuti permintaan dan ketersediaan.", "Tarif ojek online naik saat hujan."],
+  [["routing"], "Penentuan rute atau jalur. Pada Gojek: rute perjalanan. Pada jaringan dan API: ke mana sebuah permintaan diteruskan."],
+  [["OTP"], "One-Time Password: kode sekali pakai, biasanya dikirim lewat SMS."],
+  [["2FA"], "Two-Factor Authentication: login dengan dua bukti, misalnya kata sandi dan kode OTP."],
+  [["Stripe", "Midtrans"], "Penyedia layanan pembayaran yang menjual kemampuannya lewat API (payment gateway)."],
+  [["Twilio"], "Penyedia API untuk SMS, telepon, dan verifikasi."],
+  [["payment gateway"], "Layanan perantara yang memproses pembayaran antara toko, bank, dan pembeli."],
+  [["HTTP", "HTTPS"], "Protokol dasar web: klien mengirim permintaan, server membalas. HTTPS adalah versi yang dienkripsi."],
+  [["GET"], "Metode HTTP untuk membaca data tanpa mengubahnya.", "GET /customers/42"],
+  [["POST"], "Metode HTTP untuk mengirim data baru supaya diproses atau disimpan.", "POST /payments"],
+  [["gRPC"], "Cara memanggil layanan lain yang cepat dan ringkas, buatan Google. Memakai format biner Protobuf, bukan JSON."],
+  [["GraphQL"], "Gaya API tempat klien menuliskan sendiri data apa saja yang ia minta dalam satu permintaan."],
+  [["Twirp"], "Kerangka RPC sederhana buatan Twitch, sejenis gRPC."],
+  [["Protobuf"], "Protocol Buffers: format data biner buatan Google. Lebih kecil dan cepat daripada JSON, tetapi tidak terbaca manusia."],
+  [["CORBA", "DCOM", "Java RMI"], "Teknologi lama (era 1990-an) untuk memanggil objek di komputer lain. Pendahulu web service dan REST."],
+  [["Kafka"], "Apache Kafka: platform event streaming. Menampung dan mengalirkan event dalam jumlah sangat besar."],
+  [["RabbitMQ"], "Produk message broker yang populer. Memakai protokol AMQP."],
+  [["message queue"], "Antrean pesan: pengirim menaruh pesan di antrean, penerima mengambilnya saat siap. Keduanya tidak harus menyala bersamaan."],
+  [["event"], "Kabar bahwa sesuatu sudah terjadi. Pengirimnya tidak memerintah siapa pun, hanya mengumumkan.", "'Pesanan 1001 sudah dibayar'."],
+  [["reuse", "reusable"], "Dipakai ulang: satu layanan atau komponen dipakai oleh banyak aplikasi, tidak dibuat berulang."],
+  [["containerized", "container"], "Aplikasi dibungkus bersama semua kebutuhannya dalam satu paket ringan yang bisa dijalankan di mana saja.", "Docker."],
+  [["virtualized"], "Dijalankan di mesin virtual: satu komputer fisik dibagi menjadi beberapa komputer semu."],
+  [["logging"], "Mencatat kejadian di dalam sistem supaya bisa ditelusuri saat ada masalah."],
+  [["autentikasi", "authentication"], "Memastikan siapa penggunanya (login). Berbeda dari otorisasi, yang menentukan apa yang boleh ia lakukan."],
+  [["availability"], "Ketersediaan: seberapa besar bagian waktu sistem bisa dipakai.", "99,9% berarti mati paling lama sekitar 8,8 jam per tahun."],
+  [["cache"], "Tempat simpan sementara untuk hasil yang sering diminta, supaya tidak perlu dihitung atau diambil ulang."],
+  [["CRUD"], "Create, Read, Update, Delete: empat operasi dasar terhadap data."],
+  [["primary key"], "Kolom pengenal unik tiap baris dalam sebuah tabel.", "NIM pada tabel mahasiswa."],
+  [["foreign key"], "Kolom yang menunjuk ke primary key di tabel lain, untuk menghubungkan dua tabel."],
+  [["Varchar"], "Tipe data teks dengan panjang yang bisa berbeda-beda sampai batas tertentu."],
+  [["swimlane"], "Kolom atau jalur pada activity diagram yang menunjukkan siapa yang mengerjakan tiap aktivitas."],
+  [["fork"], "Garis tebal pada activity diagram yang memecah alur menjadi beberapa aktivitas yang berjalan bersamaan."],
+  [["join"], "Garis tebal pada activity diagram yang menyatukan kembali beberapa alur yang tadinya berjalan bersamaan."],
+  [["initial node"], "Lingkaran hitam penuh pada activity diagram: titik mulai."],
+  [["final node"], "Lingkaran hitam di dalam lingkaran pada activity diagram: titik selesai."],
+  [["lifeline"], "Garis putus-putus tegak pada sequence diagram yang mewakili satu objek sepanjang waktu."],
+  [["bit"], "Satuan data terkecil: satu angka 0 atau 1."],
+  [["byte"], "Satuan data berisi 8 bit. Satu byte ditulis sebagai 2 digit heksadesimal.", "0x41"],
+  [["biner"], "Bilangan basis 2, hanya memakai angka 0 dan 1."],
+  [["UTF-32"], "Cara menyimpan code point Unicode yang selalu memakai 4 byte per karakter. Sederhana tetapi boros."],
+  [["ISO 8859-1", "ISO 8859"], "Keluarga encoding 1 byte per karakter untuk bahasa-bahasa tertentu. ISO 8859-1 untuk bahasa Eropa Barat."],
+  [["Extended ASCII"], "Perluasan ASCII yang memakai kode 128 sampai 255 untuk karakter tambahan. Isinya berbeda-beda per code page."],
+  [["karakter kontrol"], "Karakter yang tidak tercetak, tetapi memberi perintah, misalnya ganti baris atau tab."],
+  [["CRLF"], "Carriage Return lalu Line Feed (0x0D 0x0A): dua karakter kontrol penanda ganti baris."],
+  [["SGML"], "Standard Generalized Markup Language: bahasa markup induk. HTML dan XML sama-sama diturunkan dari sini."],
+  [["XHTML"], "HTML yang ditulis ulang mengikuti aturan XML yang ketat."],
+  [["HTML"], "HyperText Markup Language: bahasa markup untuk menampilkan halaman web. Tag-nya sudah ditentukan."],
+  [["markup"], "Penanda yang disisipkan ke dalam teks untuk memberi tahu struktur atau artinya, biasanya berupa tag."],
+  [["tag"], "Penanda dalam kurung sudut pada XML dan HTML. Tag pembuka dan tag penutup mengapit isi elemen.", "&lt;nama&gt;Wati&lt;/nama&gt;"],
+  [["atribut", "attributes"], "Keterangan tambahan yang menempel pada sesuatu. Pada XML: pasangan nama dan nilai di dalam tag pembuka. Pada class diagram: data milik kelas."],
+  [["root element"], "Elemen terluar dokumen XML yang membungkus semua elemen lain. Hanya boleh ada satu."],
+  [["prolog", "prologue"], "Baris pertama dokumen XML yang menyebut versi XML dan encoding-nya."],
+  [["skema"], "Rancangan bentuk data: field apa saja yang ada, tipenya apa, dan aturannya bagaimana."],
+  [["URL"], "Uniform Resource Locator: URI yang sekaligus menunjukkan lokasi dan cara mengaksesnya. Alamat web adalah URL."],
+  [["RFC"], "Request for Comments: dokumen resmi yang mendefinisikan standar internet."],
+  [["LDAP"], "Protokol untuk mengakses layanan direktori, misalnya daftar pengguna di sebuah organisasi."],
+  [["AI agent", "agen AI"], "Program berbasis AI yang bisa mengerjakan tugas sendiri: memutuskan langkah, lalu memanggil API atau alat lain."]
 ];
 
 </script>
@@ -2360,7 +2502,7 @@ window.TST_GLOSS = [
           $$('.opts button', q).forEach(x => x.classList.remove('right', 'wrong'));
           b.classList.add(ok ? 'right' : 'wrong');
           if (ok) $$('.opts button', q).forEach(x => { if (x !== b) x.disabled = true; });
-          if (why) { why.hidden = false; if (!why.dataset.base) why.dataset.base = why.innerHTML; why.innerHTML = (ok ? '<b class="good">Benar.</b> ' : '<b class="bad">Belum tepat, coba lagi.</b> <span class="muted">Petunjuk ada di penjelasan setelah jawabanmu benar.</span>') + (ok ? why.dataset.base : ''); }
+          if (why) { why.hidden = false; if (!why.dataset.base) why.dataset.base = why.innerHTML; const others = $$('.opts button', q).filter(x => x.dataset.why); why.innerHTML = ok ? '<b class="good">Benar.</b> ' + why.dataset.base + (others.length ? '<div class="wl"><b>Kenapa pilihan lain salah</b><ul>' + others.map(x => '<li><b>' + x.innerHTML + '</b><br>' + esc(x.dataset.why) + '</li>').join('') + '</ul></div>' : '') : '<b class="bad">Belum tepat.</b> ' + (b.dataset.why ? '<b>' + b.innerHTML + '</b>: ' + esc(b.dataset.why) + ' ' : '') + '<span class="muted">Coba pilihan lain.</span>'; if (T.glossReady) T.gloss([why]); }
         });
       });
     });

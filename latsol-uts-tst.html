@@ -360,6 +360,11 @@ nav.tabs button[hidden]{display:none}
 .obj .mcq.tf .opts button{flex:0 0 110px;text-align:center;font-weight:600}
 .obj .mcq .kind{font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue2)}
 .obj .mcq.ok{border-color:#BFE3CF}.obj .mcq.no{border-color:#F0C4BF}
+
+.why .wl{margin-top:7px;padding-top:6px;border-top:1px dashed var(--line)}
+.why .wl ul{margin:.3em 0 0;padding-left:1.15em}
+.why .wl li{margin:.3em 0}
+.why .wl li.me>b:first-child{color:var(--bad)}
 </style>
 </head>
 <body>
@@ -1394,10 +1399,10 @@ $routes-&gt;get('products/(:num)', 'Products::show/$1');</pre><p><code>(:num)</c
 /* ===== Glosarium TST: [[istilah, variasi...], arti, contoh] ===== */
 window.TST_GLOSS = [
   [['system of systems'], 'Sistem besar yang isinya beberapa sistem lain yang masing-masing bisa jalan sendiri, lalu disambungkan supaya menghasilkan kemampuan baru.', 'Smart city: sistem lalu lintas, sistem listrik, dan sistem darurat digabung.'],
-  [['smart system'], 'Sistem yang tidak hanya memproses data, tetapi merasakan lingkungan (sensing), memahami keadaan (understanding), lalu bertindak (acting).', 'AC yang membaca suhu, menyimpulkan ruangan kosong, lalu mati sendiri.'],
+  [['smart system'], 'Sistem yang tidak hanya memproses data, tetapi merasakan lingkungan (sensing), mengolah datanya (processing), memahami keadaan (understanding), lalu bertindak (acting).', 'AC yang membaca suhu, menyimpulkan ruangan kosong, lalu mati sendiri.'],
   [['sensing'], 'Tahap pertama smart system: mengambil data dari lingkungan lewat sensor. Di slide disebut "Iqro" (membaca).', 'Sensor ultrasonik membaca jarak.'],
-  [['understanding'], 'Tahap kedua smart system: mengolah data sensor sampai tahu apa yang sedang terjadi. Di slide disebut "Tabayyun" (memeriksa kebenaran).', 'AI menyimpulkan "ruangan penuh".'],
-  [['acting'], 'Tahap ketiga smart system: melakukan tindakan ke lingkungan lewat aktuator. Di slide disebut "Bertindak".', 'Lengan robot bergerak, lampu menyala.'],
+  [['understanding'], 'Tahap ketiga smart system menurut kisi-kisi (tahap kedua di slide): menarik makna dari data yang sudah diolah sampai tahu apa yang sedang terjadi. Di slide disebut "Tabayyun" (memeriksa kebenaran).', 'AI menyimpulkan "ruangan penuh".'],
+  [['acting'], 'Tahap terakhir smart system (keempat menurut kisi-kisi, ketiga di slide): melakukan tindakan ke lingkungan lewat aktuator. Di slide disebut "Bertindak".', 'Lengan robot bergerak, lampu menyala.'],
   [['business driven integration', 'business-driven integration', 'business driven', 'business-driven'], 'Integrasi yang berangkat dari masalah bisnis. Masalahnya ada dulu, teknologi dicari untuk menyelesaikannya.', 'Data stok tidak nyambung dengan data pembelian, lalu dipasang ERP.'],
   [['technology driven integration', 'technology-driven integration', 'technology driven', 'technology-driven'], 'Integrasi yang berangkat dari teknologi. Teknologinya digabung dulu, lalu dari situ muncul ide bisnis baru.', 'GPS + pembayaran digital digabung, lahirlah ojek online.'],
   [['system integrator'], 'Pihak yang memastikan teknologi, data, proses bisnis, organisasi, dan manusia bisa bekerja sebagai satu kesatuan. Bukan sekadar pembuat API.', 'Menjawab "bagaimana semuanya terintegrasi".'],
@@ -1412,7 +1417,7 @@ window.TST_GLOSS = [
   [['batch'], 'Data dikumpulkan dulu, lalu diproses atau dikirim sekaligus pada waktu tertentu. Lawannya real-time.', 'Rekap penjualan dikirim tiap tengah malam.'],
   [['API Gateway'], 'Satu pintu masuk untuk banyak API di belakangnya. Mengurus rute, keamanan, dan pembatasan akses.', ''],
   [['Enterprise Service Bus', 'ESB'], 'Middleware pusat pada SOA. Semua service bicara lewat "bus" ini, dan bus yang mengurus rute, penerjemahan format, dan orkestrasi.', ''],
-  [['message broker', 'event broker'], 'Perantara pesan. Pengirim menaruh pesan di broker, penerima mengambilnya dari broker, jadi keduanya tidak perlu saling kenal.', 'Kafka, RabbitMQ.'],
+  [['message broker', 'event broker', 'broker'], 'Sebagai nama architectural pattern, Broker berarti gagasan yang sama: komponen tidak saling bicara langsung, melainkan lewat perantara. Perantara pesan. Pengirim menaruh pesan di broker, penerima mengambilnya dari broker, jadi keduanya tidak perlu saling kenal.', 'Kafka, RabbitMQ.'],
   [['iPaaS'], 'Integration Platform as a Service: platform integrasi siap pakai di cloud.', 'MuleSoft, Boomi, Informatica.'],
   [['ETL', 'ETL/ELT'], 'Extract, Transform, Load: ambil data dari sumber, ubah bentuknya, lalu muat ke tujuan. Pada ELT, dimuat dulu baru diubah.', ''],
   [['event streaming'], 'Aliran kejadian yang dikirim terus-menerus dan langsung diproses saat datang.', 'Kafka.'],
@@ -1568,7 +1573,144 @@ window.TST_GLOSS = [
   [['decoupled'], 'Terpisah: dua pihak tidak saling bergantung langsung.', 'Publisher dan subscriber hanya sama-sama mengenal broker.'],
   [['prefix'], 'Awalan pendek di depan nama elemen XML yang menunjukkan namespace-nya.', 'nsb:id'],
   [['heterogen'], 'Beraneka ragam: sistem-sistem yang bahasa, database, atau platformnya berbeda.', ''],
-  [['CodeIgniter', 'CI4'], 'Framework PHP yang memakai pola MVC. Dipakai di hands-on kuliah ini untuk membuat API.', '']
+  [['CodeIgniter', 'CI4'], 'Framework PHP yang memakai pola MVC. Dipakai di hands-on kuliah ini untuk membuat API.', ''],
+  /* tambahan: istilah teknis yang sebelumnya belum punya penjelasan */
+  [["Factory"], "Design pattern: pembuatan objek diserahkan ke satu bagian khusus (si 'pabrik'), sehingga kode pemakai tidak perlu tahu kelas persis yang dibuat.", "Kode cukup meminta 'buatkan notifikasi', pabrik yang memutuskan membuat notifikasi email atau SMS."],
+  [["Observer"], "Design pattern: satu objek menyimpan daftar 'pengamat' dan memberi tahu semuanya secara otomatis setiap kali keadaannya berubah.", "Harga saham berubah, semua layar yang menampilkannya ikut diperbarui. Ini versi kecil dari publish dan subscribe."],
+  [["Strategy"], "Design pattern: beberapa cara mengerjakan hal yang sama dibungkus menjadi objek yang bisa ditukar-tukar saat program berjalan.", "Ongkos kirim dihitung dengan cara 'reguler', 'kilat', atau 'gratis'. Cara hitungnya bisa diganti tanpa mengubah kode pemesanan."],
+  [["CQRS"], "Command Query Responsibility Segregation. Architectural pattern yang memisahkan bagian yang mengubah data (command) dari bagian yang membaca data (query).", "Model untuk menulis pesanan dipisah dari model untuk menampilkan laporan pesanan."],
+  [["list comprehension"], "Cara khas Python menulis pembuatan daftar dalam satu baris. Contoh language idiom, karena hanya ada di bahasa tertentu.", "[x * 2 for x in angka]"],
+  [["using statement"], "Cara khas C# untuk memakai sumber daya (berkas, koneksi) yang otomatis ditutup setelah selesai. Contoh language idiom."],
+  [["external entity", "entitas luar"], "Simbol DFD: pihak di luar sistem yang memberi data ke sistem atau menerima data darinya. Digambar persegi panjang.", "Mahasiswa pada sistem akademik."],
+  [["data store"], "Simbol DFD: tempat data disimpan untuk dipakai lagi nanti. Digambar dua garis sejajar.", "Tabel mahasiswa."],
+  [["data flow", "aliran data"], "Simbol DFD: panah berlabel yang menunjukkan data apa yang berpindah dan ke mana arahnya.", "Panah berlabel NIM."],
+  [["entities"], "Blok bangunan tactical design: objek yang punya identitas tetap walau datanya berubah.", "Mahasiswa dengan NIM tertentu tetap mahasiswa yang sama walau alamatnya berganti."],
+  [["value objects", "value object"], "Blok bangunan tactical design: objek yang hanya dikenali dari nilainya dan tidak punya identitas sendiri.", "Alamat, tanggal, atau jumlah uang."],
+  [["aggregates", "aggregate"], "Blok bangunan tactical design: sekelompok objek yang diperlakukan sebagai satu kesatuan dan diubah lewat satu pintu.", "Pesanan beserta baris-baris barangnya."],
+  [["repositories", "repository"], "Blok bangunan tactical design: bagian yang mengurus penyimpanan dan pengambilan objek, sehingga domain tidak perlu tahu soal database."],
+  [["factories"], "Blok bangunan tactical design: bagian yang mengurus pembuatan objek yang rumit."],
+  [["Eric Evans"], "Penulis buku Domain-Driven Design (2003), tempat istilah DDD, bounded context, dan ubiquitous language berasal."],
+  [["Alistair Cockburn"], "Pencetus hexagonal architecture, yang ia namai juga Ports & Adapters."],
+  [["The Three Amigos"], "Julukan tiga penggagas UML: Grady Booch, James Rumbaugh, dan Ivar Jacobson."],
+  [["Von Neumann"], "John von Neumann, perumus arsitektur komputer yang menyimpan program dan data di memori yang sama."],
+  [["ISO/IEC/IEEE 15288"], "Standar internasional tentang proses siklus hidup sistem (systems engineering). Slide mengutip definisi 'sistem' dari sini."],
+  [["INCOSE"], "International Council on Systems Engineering, organisasi profesi rekayasa sistem. Definisi sistemnya paling lengkap karena menyebut orang dan proses."],
+  [["TOGAF"], "The Open Group Architecture Framework: kerangka kerja terbuka untuk menyusun enterprise architecture."],
+  [["ArchiMate"], "Bahasa gambar standar untuk memodelkan enterprise architecture (lapisan bisnis, aplikasi, teknologi)."],
+  [["OpenAPI"], "Standar terbuka untuk menuliskan deskripsi sebuah REST API: alamatnya, data yang dikirim, dan bentuk balasannya."],
+  [["ISO 27001"], "Standar internasional untuk sistem manajemen keamanan informasi."],
+  [["DAMA-DMBOK"], "Buku panduan tata kelola data (Data Management Body of Knowledge) dari organisasi DAMA."],
+  [["NIST"], "National Institute of Standards and Technology, lembaga standar Amerika Serikat. Kerangka cloud-nya sering dijadikan acuan."],
+  [["MQTT"], "Protokol pesan yang sangat ringan untuk perangkat IoT, memakai pola publish dan subscribe.", "Sensor suhu mengirim bacaan ke broker MQTT."],
+  [["CoAP"], "Constrained Application Protocol: protokol ringan mirip HTTP untuk perangkat IoT berdaya kecil."],
+  [["AMQP"], "Advanced Message Queuing Protocol: protokol terbuka untuk antrean pesan. Dipakai RabbitMQ."],
+  [["OAuth 2.0", "OAuth2", "OAuth"], "Standar terbuka untuk otorisasi: memberi aplikasi izin terbatas mengakses data tanpa menyerahkan kata sandi.", "Tombol 'Masuk dengan Google'."],
+  [["OpenID Connect"], "Lapisan identitas di atas OAuth 2.0. Dipakai untuk memastikan siapa penggunanya (login)."],
+  [["SAML"], "Security Assertion Markup Language: standar berbasis XML untuk Single Sign-On di lingkungan perusahaan."],
+  [["SMTP", "IMAP", "POP3"], "Protokol standar email. SMTP untuk mengirim, IMAP dan POP3 untuk mengambil email."],
+  [["ANSI SQL"], "Versi baku bahasa SQL yang ditetapkan lembaga standar. Termasuk open standard."],
+  [["T-SQL"], "Transact-SQL: perluasan SQL milik Microsoft untuk SQL Server. Termasuk proprietary."],
+  [["PL/SQL"], "Perluasan SQL milik Oracle yang menambah kemampuan pemrograman prosedural. Termasuk proprietary."],
+  [["SQL"], "Structured Query Language: bahasa untuk mengambil dan mengubah data di database relasional."],
+  [["MySQL", "PostgreSQL"], "Dua produk database relasional yang populer. Di contoh hexagonal dipakai untuk menunjukkan teknologi yang bisa ditukar."],
+  [["DynamoDB", "Cosmos DB"], "Layanan database cloud milik vendor (DynamoDB milik AWS, Cosmos DB milik Microsoft). API-nya proprietary."],
+  [["DWG"], "Format berkas gambar teknik milik Autodesk (AutoCAD). Proprietary."],
+  [["IDoc"], "Intermediate Document: format pertukaran data milik SAP. Proprietary."],
+  [["Siemens S7 Protocol", "Siemens S7"], "Protokol komunikasi untuk PLC buatan Siemens. Proprietary."],
+  [["Desigo"], "Sistem otomasi gedung milik Siemens. Proprietary."],
+  [["PLC"], "Programmable Logic Controller: komputer kecil tahan banting yang mengendalikan mesin di pabrik."],
+  [["SAP"], "Vendor perangkat lunak ERP besar. Banyak contoh standar proprietary di slide berasal dari SAP."],
+  [["ERP"], "Enterprise Resource Planning: satu sistem besar yang menyatukan keuangan, stok, pembelian, produksi, dan lainnya.", "SAP, Odoo."],
+  [["CRM"], "Customer Relationship Management: sistem pengelola data dan interaksi dengan pelanggan."],
+  [["SCM"], "Supply Chain Management: sistem pengelola rantai pasok dari pemasok sampai pelanggan."],
+  [["HRIS"], "Human Resource Information System: sistem informasi kepegawaian."],
+  [["HRM"], "Human Resource Management: pengelolaan kepegawaian. Contoh generic subdomain di kisi-kisi."],
+  [["Payroll"], "Penggajian. Contoh generic subdomain di kisi-kisi karena hampir semua organisasi butuh dan bisa membeli produk jadinya."],
+  [["MDM"], "Master Data Management: cara menjaga data induk (pelanggan, produk) tetap satu versi dan konsisten di semua sistem."],
+  [["Business Intelligence", "BI"], "Kegiatan dan alat untuk mengubah data perusahaan menjadi laporan dan dashboard bagi pengambil keputusan."],
+  [["data warehouse"], "Gudang data: tempat data dari banyak sistem dikumpulkan dan dirapikan khusus untuk analisis dan laporan."],
+  [["data lake"], "Tempat menyimpan data mentah dalam jumlah besar dan bentuk apa pun, sebelum diolah."],
+  [["in-memory database"], "Database yang menyimpan datanya di memori (RAM), sehingga sangat cepat.", "Redis."],
+  [["digital twin"], "Tiruan digital dari benda atau sistem nyata yang datanya terus diperbarui dari sensor, sehingga bisa dipantau dan disimulasikan."],
+  [["IoT"], "Internet of Things: benda fisik yang diberi sensor dan sambungan jaringan sehingga bisa mengirim data.", "Meteran listrik pintar."],
+  [["sensor"], "Alat yang mengubah keadaan fisik (suhu, cahaya, gerak) menjadi data."],
+  [["aktuator", "actuator"], "Alat yang mengubah perintah sistem menjadi tindakan fisik. Kebalikan sensor.", "Motor, katup, lampu."],
+  [["firmware"], "Perangkat lunak yang tertanam di dalam perangkat keras dan mengendalikannya langsung."],
+  [["cloud computing", "cloud"], "Memakai server, penyimpanan, dan layanan milik penyedia lewat internet, tanpa membeli mesinnya sendiri."],
+  [["edge"], "Edge computing: pengolahan data dilakukan di dekat sumbernya (di perangkat atau di lokasi), bukan di pusat data yang jauh."],
+  [["5G"], "Generasi kelima jaringan seluler: lebih cepat dan jedanya lebih kecil."],
+  [["zero trust"], "Prinsip keamanan: tidak ada yang otomatis dipercaya, tiap akses selalu diperiksa walau berasal dari dalam jaringan."],
+  [["IAM"], "Identity and Access Management: pengelolaan siapa penggunanya dan apa yang boleh ia akses."],
+  [["observability"], "Kemampuan melihat keadaan dalam sebuah sistem dari luar, lewat log, metrik, dan jejak permintaan."],
+  [["DevOps"], "Cara kerja yang menyatukan tim pengembang dan tim operasional supaya rilis lebih cepat dan lebih aman."],
+  [["CI/CD"], "Continuous Integration dan Continuous Delivery: kode yang baru ditulis otomatis diuji lalu otomatis dipasang."],
+  [["composable"], "Bisa dirakit: platform disusun dari komponen-komponen yang bisa dipasang dan diganti seperti balok."],
+  [["stream processing"], "Mengolah data langsung saat datanya mengalir masuk, bukan menunggu terkumpul dulu."],
+  [["business rules engine"], "Komponen yang menyimpan dan menjalankan aturan bisnis secara terpisah dari kode aplikasi."],
+  [["business rules", "aturan bisnis"], "Ketentuan yang berasal dari bisnisnya, bukan dari teknologinya.", "Mahasiswa tidak boleh mengambil lebih dari 24 SKS."],
+  [["chatbot"], "Program yang melayani percakapan dengan pengguna secara otomatis."],
+  [["mass production"], "Produksi massal: barang yang sama dibuat dalam jumlah besar."],
+  [["mass customization"], "Produksi dalam jumlah besar, tetapi tiap barang bisa disesuaikan dengan keinginan pembelinya."],
+  [["build-to-order"], "Barang baru dibuat setelah ada pesanan, bukan dibuat dulu lalu disimpan."],
+  [["hypercare"], "Masa pengawasan ketat tepat setelah sistem mulai dipakai di produksi."],
+  [["Keycloak", "Okta", "Auth0", "Microsoft Entra ID"], "Produk siap pakai untuk login dan Single Sign-On. Contoh solusi untuk generic subdomain."],
+  [["dynamic pricing"], "Harga yang berubah otomatis mengikuti permintaan dan ketersediaan.", "Tarif ojek online naik saat hujan."],
+  [["routing"], "Penentuan rute atau jalur. Pada Gojek: rute perjalanan. Pada jaringan dan API: ke mana sebuah permintaan diteruskan."],
+  [["OTP"], "One-Time Password: kode sekali pakai, biasanya dikirim lewat SMS."],
+  [["2FA"], "Two-Factor Authentication: login dengan dua bukti, misalnya kata sandi dan kode OTP."],
+  [["Stripe", "Midtrans"], "Penyedia layanan pembayaran yang menjual kemampuannya lewat API (payment gateway)."],
+  [["Twilio"], "Penyedia API untuk SMS, telepon, dan verifikasi."],
+  [["payment gateway"], "Layanan perantara yang memproses pembayaran antara toko, bank, dan pembeli."],
+  [["HTTP", "HTTPS"], "Protokol dasar web: klien mengirim permintaan, server membalas. HTTPS adalah versi yang dienkripsi."],
+  [["GET"], "Metode HTTP untuk membaca data tanpa mengubahnya.", "GET /customers/42"],
+  [["POST"], "Metode HTTP untuk mengirim data baru supaya diproses atau disimpan.", "POST /payments"],
+  [["gRPC"], "Cara memanggil layanan lain yang cepat dan ringkas, buatan Google. Memakai format biner Protobuf, bukan JSON."],
+  [["GraphQL"], "Gaya API tempat klien menuliskan sendiri data apa saja yang ia minta dalam satu permintaan."],
+  [["Twirp"], "Kerangka RPC sederhana buatan Twitch, sejenis gRPC."],
+  [["Protobuf"], "Protocol Buffers: format data biner buatan Google. Lebih kecil dan cepat daripada JSON, tetapi tidak terbaca manusia."],
+  [["CORBA", "DCOM", "Java RMI"], "Teknologi lama (era 1990-an) untuk memanggil objek di komputer lain. Pendahulu web service dan REST."],
+  [["Kafka"], "Apache Kafka: platform event streaming. Menampung dan mengalirkan event dalam jumlah sangat besar."],
+  [["RabbitMQ"], "Produk message broker yang populer. Memakai protokol AMQP."],
+  [["message queue"], "Antrean pesan: pengirim menaruh pesan di antrean, penerima mengambilnya saat siap. Keduanya tidak harus menyala bersamaan."],
+  [["event"], "Kabar bahwa sesuatu sudah terjadi. Pengirimnya tidak memerintah siapa pun, hanya mengumumkan.", "'Pesanan 1001 sudah dibayar'."],
+  [["reuse", "reusable"], "Dipakai ulang: satu layanan atau komponen dipakai oleh banyak aplikasi, tidak dibuat berulang."],
+  [["containerized", "container"], "Aplikasi dibungkus bersama semua kebutuhannya dalam satu paket ringan yang bisa dijalankan di mana saja.", "Docker."],
+  [["virtualized"], "Dijalankan di mesin virtual: satu komputer fisik dibagi menjadi beberapa komputer semu."],
+  [["logging"], "Mencatat kejadian di dalam sistem supaya bisa ditelusuri saat ada masalah."],
+  [["autentikasi", "authentication"], "Memastikan siapa penggunanya (login). Berbeda dari otorisasi, yang menentukan apa yang boleh ia lakukan."],
+  [["availability"], "Ketersediaan: seberapa besar bagian waktu sistem bisa dipakai.", "99,9% berarti mati paling lama sekitar 8,8 jam per tahun."],
+  [["cache"], "Tempat simpan sementara untuk hasil yang sering diminta, supaya tidak perlu dihitung atau diambil ulang."],
+  [["CRUD"], "Create, Read, Update, Delete: empat operasi dasar terhadap data."],
+  [["primary key"], "Kolom pengenal unik tiap baris dalam sebuah tabel.", "NIM pada tabel mahasiswa."],
+  [["foreign key"], "Kolom yang menunjuk ke primary key di tabel lain, untuk menghubungkan dua tabel."],
+  [["Varchar"], "Tipe data teks dengan panjang yang bisa berbeda-beda sampai batas tertentu."],
+  [["swimlane"], "Kolom atau jalur pada activity diagram yang menunjukkan siapa yang mengerjakan tiap aktivitas."],
+  [["fork"], "Garis tebal pada activity diagram yang memecah alur menjadi beberapa aktivitas yang berjalan bersamaan."],
+  [["join"], "Garis tebal pada activity diagram yang menyatukan kembali beberapa alur yang tadinya berjalan bersamaan."],
+  [["initial node"], "Lingkaran hitam penuh pada activity diagram: titik mulai."],
+  [["final node"], "Lingkaran hitam di dalam lingkaran pada activity diagram: titik selesai."],
+  [["lifeline"], "Garis putus-putus tegak pada sequence diagram yang mewakili satu objek sepanjang waktu."],
+  [["bit"], "Satuan data terkecil: satu angka 0 atau 1."],
+  [["byte"], "Satuan data berisi 8 bit. Satu byte ditulis sebagai 2 digit heksadesimal.", "0x41"],
+  [["biner"], "Bilangan basis 2, hanya memakai angka 0 dan 1."],
+  [["UTF-32"], "Cara menyimpan code point Unicode yang selalu memakai 4 byte per karakter. Sederhana tetapi boros."],
+  [["ISO 8859-1", "ISO 8859"], "Keluarga encoding 1 byte per karakter untuk bahasa-bahasa tertentu. ISO 8859-1 untuk bahasa Eropa Barat."],
+  [["Extended ASCII"], "Perluasan ASCII yang memakai kode 128 sampai 255 untuk karakter tambahan. Isinya berbeda-beda per code page."],
+  [["karakter kontrol"], "Karakter yang tidak tercetak, tetapi memberi perintah, misalnya ganti baris atau tab."],
+  [["CRLF"], "Carriage Return lalu Line Feed (0x0D 0x0A): dua karakter kontrol penanda ganti baris."],
+  [["SGML"], "Standard Generalized Markup Language: bahasa markup induk. HTML dan XML sama-sama diturunkan dari sini."],
+  [["XHTML"], "HTML yang ditulis ulang mengikuti aturan XML yang ketat."],
+  [["HTML"], "HyperText Markup Language: bahasa markup untuk menampilkan halaman web. Tag-nya sudah ditentukan."],
+  [["markup"], "Penanda yang disisipkan ke dalam teks untuk memberi tahu struktur atau artinya, biasanya berupa tag."],
+  [["tag"], "Penanda dalam kurung sudut pada XML dan HTML. Tag pembuka dan tag penutup mengapit isi elemen.", "&lt;nama&gt;Wati&lt;/nama&gt;"],
+  [["atribut", "attributes"], "Keterangan tambahan yang menempel pada sesuatu. Pada XML: pasangan nama dan nilai di dalam tag pembuka. Pada class diagram: data milik kelas."],
+  [["root element"], "Elemen terluar dokumen XML yang membungkus semua elemen lain. Hanya boleh ada satu."],
+  [["prolog", "prologue"], "Baris pertama dokumen XML yang menyebut versi XML dan encoding-nya."],
+  [["skema"], "Rancangan bentuk data: field apa saja yang ada, tipenya apa, dan aturannya bagaimana."],
+  [["URL"], "Uniform Resource Locator: URI yang sekaligus menunjukkan lokasi dan cara mengaksesnya. Alamat web adalah URL."],
+  [["RFC"], "Request for Comments: dokumen resmi yang mendefinisikan standar internet."],
+  [["LDAP"], "Protokol untuk mengakses layanan direktori, misalnya daftar pengguna di sebuah organisasi."],
+  [["AI agent", "agen AI"], "Program berbasis AI yang bisa mengerjakan tugas sendiri: memutuskan langkah, lalu memanggil API atau alat lain."]
 ];
 
 </script>
@@ -1682,6 +1824,9 @@ window.LB_OBJ = {
   ] }
 };
 
+
+/* Alasan tiap pilihan salah pada soal pilihan ganda Paket B. null = pilihan benar. */
+window.LB_WHY = {"bo1": {"0": ["Terlalu sempit. Sistem tidak harus berupa perangkat keras atau jaringan.", null, "Itu hanya satu jenis sistem (perangkat lunak). Definisi ISO berlaku untuk sistem apa pun.", "Database hanya salah satu elemen yang mungkin ada, bukan definisi sistem."], "1": ["Justru kebalikannya. INCOSE menambahkan orang, proses, informasi, dan layanan.", null, "INCOSE tidak bicara soal kebaruan teknologi.", "Ukuran tidak disebut. Sistem kecil pun tetap sistem."], "3": ["Itu fungsi data store atau database, bukan interface.", null, "Interface tidak berurusan dengan kecepatan prosesor.", "Interface menghubungkan dua sistem, bukan mengganti salah satunya."], "5": ["Itu pola kerja sistem sederhana (input, proses, output), bukan komponen integrasi.", null, "Itu daftar unsur teknis saja. Integrasi juga mencakup proses bisnis, data, dan organisasi.", "Itu empat tahap smart system (topik 5)."], "6": ["Alur kerjanya tidak dipersoalkan. Yang kacau adalah format tanggalnya.", null, "Sambungan API sudah ada, jadi teknologinya sudah beres.", "Tidak ada masalah aturan, hak akses, atau kepemilikan."], "8": ["Harga perangkat keras bukan penyebab yang disebut slide.", null, "Jumlah programmer adalah akibat, bukan penyebab kompleksitas.", "Bahasa baru adalah alat. Sumbernya tetap kebutuhan manusia."], "9": [null, "Itu perlengkapan fisik pusat data, bukan sumber kompleksitas persoalan.", "Itu unsur database.", "Itu istilah pemeliharaan perangkat lunak."], "11": ["Keduanya berlawanan arah: satu memecah, satu menyatukan.", null, "Urutannya terbalik. Sistem dipecah dulu supaya dipahami, baru disatukan.", "Integrasi selalu diperlukan supaya bagian-bagian bisa bekerja sebagai satu kesatuan, bukan cadangan saat dekomposisi gagal."]}, "bo2": {"0": ["Itu arti domain pada internet, bukan pada DDD.", null, "Slide menegaskan domain bukan database.", "Slide menegaskan domain bukan teknologi atau framework."], "1": ["Ini jebakan utama kisi-kisi. Fitur rumit bisa tetap generic.", null, "Jumlah kode tidak menunjukkan nilai strategis.", "Urutan pembuatan tidak berhubungan dengan nilai bisnisnya."], "2": ["Kerumitan teknis bukan ukurannya.", null, "Itu ciri generic subdomain.", "Itu sikap terhadap generic. Core justru dibangun sendiri oleh tim terbaik."], "3": ["Core memberi keunggulan kompetitif langsung, sedangkan soal menyebut 'tidak memberi'.", null, "Generic tidak spesifik untuk bisnis itu dan tidak dikembangkan sendiri, melainkan dibeli jadi.", "Bounded context adalah batas model di sisi perangkat lunak, bukan jenis subdomain."], "4": ["Itu pembeda utama ojek online, jadi core.", "Kalau itu alasan pelanggan memilih toko, berarti core.", null, "Itu pembeda utama mesin pencari, jadi core."], "6": ["Generic cukup memakai solusi siap pakai. Menaruh tim terbaik di sana adalah pemborosan.", "Supporting cukup dibuat seperlunya. Jumlahnya tidak menentukan prioritas.", null, "Membagi rata berarti core kekurangan sumber daya, padahal di situlah keunggulannya."], "7": [null, "Kebalikannya. Core bisa berubah saat pesaing meniru atau strategi berganti.", "Tidak semua menjadi core. Perubahan bisa ke arah mana saja, termasuk core menjadi generic.", "Generic justru sebaiknya dibeli atau memakai yang sudah ada."], "8": ["Fitur itu sudah tidak membedakan, jadi tim terbaik terbuang di sana.", null, "Fiturnya masih dibutuhkan. Yang berubah hanya statusnya.", "Bounded context soal batas model, tidak menjawab soal alokasi sumber daya."], "9": [null, "Bounded context tidak berhubungan dengan jumlah pengguna.", "Kebalikannya. Bounded context memisahkan model, bukan memaksa satu tabel bersama.", "Itu bukan batas model. Lagi pula bahasa di dalam bounded context dipakai bersama orang bisnis."], "10": ["Bukan bahasa pemrograman. Yang dimaksud adalah istilah bisnis yang dipakai bersama.", null, "Bukan soal bahasa Inggris atau Indonesia, melainkan konsistensi istilah domain.", "Kebalikannya. Istilahnya harus dimengerti orang bisnis juga."], "11": ["Vendor lock-in adalah terkunci pada satu vendor (topik standar).", null, "Single point of failure adalah satu titik yang kalau gagal membuat banyak bagian ikut gagal.", "Fault isolation adalah keunggulan microservices, bukan masalah istilah."]}, "bo3": {"0": ["Itu ciri microservices.", null, "Itu ciri hexagonal.", "Itu ciri pipe and filter."], "1": ["Kebalikannya. Pada monolitik semua kode ada di satu tempat sehingga bug mudah dilacak. Kode tersebar adalah ciri microservices.", null, "Itu kekurangan microservices. Pada monolitik cukup memanggil function atau import module.", "Itu keleluasaan microservices. Monolitik umumnya satu bahasa."], "2": ["Fault isolation adalah keunggulan microservices.", null, "Publish dan subscribe adalah pola event-driven.", "Stored-program concept adalah ciri arsitektur komputer Von Neumann."], "3": ["Itu tiga komponen pola MVC, bukan lapisan layered.", null, "Itu tahap smart system versi slide.", "Itu istilah pada pipe and filter."], "5": ["Client hanya menampilkan antarmuka, mengirim permintaan, dan menampilkan hasil.", null, "Broker ada di event-driven, bukan client-server.", "Filter ada di pipe and filter."], "6": ["Itu contoh pemakaian pipe and filter.", null, "Itu ciri monolithic.", "Database tetap dipakai, hanya ditaruh di luar sebagai adapter yang bisa diganti."], "7": ["Itu komponen pipe and filter.", null, "Itu peran pada event-driven.", "Itu pembagian pada client-server."], "9": ["Client-server memisahkan peminta dan penyedia layanan, bukan tahap pengolahan.", "Hexagonal bertujuan mengisolasi domain dari teknologi, bukan mengalirkan data bertahap.", null, "Monolithic menyatukan semuanya dalam satu unit, tidak menggambarkan tahap pengolahan."], "11": [null, "Keduanya tidak terikat jenis aplikasi.", "Keduanya gagasan desain. Tidak ada yang 'hanya kode' atau 'hanya gambar'.", "Tingkat cakupannya berbeda jauh: sistem dibanding kelas."], "12": ["Terbalik. Observer adalah design pattern, microservices adalah architectural style.", null, "MVC adalah architectural pattern, dan SOA adalah architectural style.", "Terbalik. Strategy adalah design pattern, event-driven adalah architectural style."]}, "bo4": {"0": ["Itu data store.", "Itu external entity.", null, "Itu data flow."], "1": ["Process ada di dalam sistem dan mengolah data.", null, "Data store adalah tempat penyimpanan di dalam sistem.", "Data flow adalah panah perpindahan data, bukan pihak."], "2": [null, "Pengguna digambar sebagai external entity.", "Perhitungan adalah process.", "DFD tidak menggambarkan jaringan atau teknologi."], "3": [null, "Level 1 sudah memecah sistem menjadi subproses.", "Class diagram adalah diagram UML untuk struktur objek.", "Activity diagram adalah diagram UML untuk aliran aktivitas."], "5": [null, "Terlalu rinci. Itu urusan rancangan database, bukan context diagram.", "DFD tidak peduli teknologi.", "Itu urusan manajemen proyek, bukan pemodelan sistem."], "6": ["Kamus data bukan penerjemah bahasa.", null, "Itu fungsi backup.", "Itu fungsi DFD. Kamus data menjelaskan data yang muncul di DFD itu."], "8": ["Itu sequence diagram.", null, "Itu activity diagram.", "Itu urusan class diagram atau rancangan database."], "9": ["Itu use case diagram (aktor dan fungsinya).", null, "Itu class diagram.", "Itu bukan diagram yang dibahas. Activity diagram tidak menggambar infrastruktur."], "10": ["Use case tidak menunjukkan urutan atau percabangan, hanya siapa bisa apa.", null, "Context diagram hanya satu proses dan pihak luarnya.", "Data dictionary adalah dokumen penjelas data, bukan diagram alur."]}, "bo5": {"0": ["Understanding dan Processing tertukar. Data harus diolah dulu sebelum dipahami.", "Tidak mungkin mengolah sebelum ada data dari sensing.", null, "Tidak mungkin memahami sebelum ada data."], "1": [null, "Belum ada pengolahan. Angka itu masih bacaan mentah.", "Belum ada kesimpulan, baru angka.", "Belum ada tindakan ke lingkungan."], "2": ["Sensing hanya mengambil bacaan, belum menghitung atau membersihkan.", null, "Rata-rata masih berupa angka, belum makna.", "Tidak ada tindakan ke lingkungan."], "3": ["Sensing hanya membaca angka kelembapan.", "Processing menghasilkan angka yang rapi, bukan kesimpulan.", null, "Acting baru terjadi saat pompa menyala."], "4": ["Sensing adalah membaca lingkungan, bukan mengubahnya.", "Processing mengolah data, tidak menggerakkan alat.", "Understanding berhenti di kesimpulan.", null], "6": ["Itu pemanggilan langsung, justru yang dihindari event-driven.", null, "Berbagi database membuat komponen saling terikat erat.", "Itu integrasi batch lewat berkas."], "7": ["Broker hanya perantara pesan, bukan database aplikasi.", null, "Logika bisnis ada di publisher dan subscriber.", "Itu tugas client atau lapisan presentasi."], "10": [null, "Event-driven tidak mengubah ukuran data.", "Event tetap dikirim lewat jaringan.", "Justru broker adalah bagian inti event-driven."]}, "bo6": {"0": [null, "Tiap service SOA punya datanya sendiri. Penghubungnya ESB.", "Itu pertukaran berkas, bukan mekanisme SOA.", "Slide menegaskan service tidak saling memanggil langsung."], "1": ["Ini memang tujuan SOA.", "Ini memang tujuan SOA.", null, "Ini memang tujuan SOA."], "2": ["Business services mendefinisikan kebutuhan bisnis.", "Enterprise services mengimplementasikan kebutuhan bisnis untuk dipakai lintas organisasi.", "Application services menjalankan fungsi spesifik satu aplikasi.", null], "3": ["Lapisan 1: sumber data dan aplikasi yang sudah ada.", "Lapisan 2: membungkus fungsi aplikasi supaya bisa menjadi service.", null, "Lapisan 9: menetapkan standar dan kebijakan."], "4": ["Itu tugas database milik service.", null, "Itu urusan keamanan, bukan registry.", "Registry hanya memberi alamat. Pemanggilan tetap lewat API."], "6": ["Kebalikannya. Rules terpusat justru membuat aturan konsisten, dan itu kelebihannya.", null, "Kebalikannya. Rules dipakai banyak service.", "Itu ciri microservices, bukan akibat Rules terpusat."], "7": ["Berbagi database justru membuat layanan terikat erat.", null, "Itu tight coupling.", "Itu kebalikan independently deployable."], "9": ["Itu soal menambah kapasitas pada layanan yang sibuk, bukan soal kegagalan.", null, "Itu model bisnis API, bukan sifat arsitektur.", "Itu ciri service SOA yang butirannya kasar."], "10": ["Itu kebalikannya (database bersama).", null, "Yang dipisah adalah kepemilikan per service, bukan per tabel.", "ESB adalah penghubung SOA. Database-per-service tidak mengatur itu."], "11": ["Bahasa pemrograman bukan pembeda utama menurut slide.", null, "Jenis database bukan pembeda yang disebut slide.", "Jumlah pengguna tidak membedakan keduanya."], "13": ["Pay-per-call menagih sejak panggilan pertama, tanpa jatah gratis.", "Subscription menagih biaya tetap per bulan sejak awal.", null, "Revenue share mengambil persentase dari transaksi."], "14": ["Itu ciri pay-per-call.", "Itu ciri subscription.", null, "Itu ciri revenue share."]}, "bo7": {"0": ["Ukuran database bukan tujuannya.", null, "Representasi data justru isi yang lewat di API, bukan penggantinya.", "Ia dibutuhkan untuk pertukaran antar sistem, bukan hanya tampilan."], "1": ["Terbalik. JSON yang berbasis key-value, XML yang berbasis tag.", null, "Tabel adalah bentuk CSV atau database.", "Keduanya format teks."], "2": ["Kompresi adalah hal terpisah dan bisa dipakai untuk keduanya.", null, "JSON tetap menulis nama field, hanya sekali.", "XML menyimpan teks, bukan gambar."], "3": ["Yang paling merasakan dampaknya adalah perangkat mobile dan jaringannya.", null, "Ukuran payload tidak berhubungan dengan jumlah baris kode.", "Tidak berhubungan dengan jumlah tabel."], "5": ["Kebalikannya. Payload XML lebih besar.", null, "Browser mengurai JSON secara native dan lebih cepat.", "Kebalikannya. XML lebih panjang."], "6": ["Namespace justru menambah teks.", null, "Namespace tidak ada hubungannya dengan keamanan.", "Itu pekerjaan konversi, bukan namespace."], "7": ["Itu penulisan objek JSON.", null, "Tanda pagar dipakai untuk komentar YAML.", "Bukan aturan namespace."], "9": ["Itu kompresi. Unicode tidak mengecilkan teks, hanya memberi nomor pada karakter.", null, "Itu ciri ASCII, yang hanya cukup untuk huruf Latin dasar.", "Unicode bukan format pertukaran data."], "10": ["Code point adalah nomor, bukan byte. Di UTF-8 huruf A memang 0x41, tetapi di UTF-16 menjadi 00 41.", null, "Code point sama di semua encoding Unicode.", "Tidak berhubungan dengan font."], "12": ["Vendor lock-in adalah terkunci pada satu vendor.", null, "Fault isolation adalah keunggulan microservices.", "Konflik namespace terjadi pada nama elemen XML, bukan pada huruf yang rusak."]}};
 </script>
 <script>
 /* ===== Latihan soal ===== */
@@ -1847,6 +1992,8 @@ window.LB_OBJ = {
             $$('button', wrap).forEach(b => { b.disabled = true; if (b.dataset.v === right) b.classList.add('right'); else if (b.dataset.v === txt) b.classList.add('wrong'); });
             q.classList.add(ok ? 'ok' : 'no'); wy.hidden = false;
             wy.innerHTML = (ok ? '<b class="good">Tepat.</b> ' : '<b class="bad">Belum tepat.</b> Jawabannya: <b>' + esc(right) + '</b>. ') + esc(why);
+            const W = !tf && window.LB_WHY && (window.LB_WHY[key] || {})[i];
+            if (W) wy.innerHTML += '<div class="wl"><b>Kenapa pilihan lain salah</b><ul>' + opts.map((o, j) => o === right ? '' : '<li' + (o === txt ? ' class="me"' : '') + '><b>' + 'ABCD'[j] + '. ' + esc(o) + '</b>' + (o === txt ? ' (pilihanmu)' : '') + '<br>' + esc(W[it[1].indexOf(o)] || '') + '</li>').join('') + '</ul></div>';
             if (T.glossReady) T.gloss([wy]);
             if (save) { saved[qid] = txt; store.set('ii3160.lobj', saved); }
           }
