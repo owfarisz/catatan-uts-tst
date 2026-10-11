@@ -341,6 +341,25 @@ body.ctxon .ctx.shut>*:not(.cbar){display:none}
 .de.sel path{stroke-width:4}
 
 svg>text{pointer-events:none}
+
+.pkbar{background:var(--navy);padding:0 12px 12px}
+.pkbar .wrap{max-width:1060px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap}
+.pkbar button{flex:1 1 240px;text-align:left;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#DCEBFA;border-radius:10px;padding:8px 14px;font:inherit;cursor:pointer}
+.pkbar button b{display:block;color:#fff;font-size:1rem}
+.pkbar button span{font-size:.8rem}
+.pkbar button:hover{background:rgba(255,255,255,.16)}
+.pkbar button.on{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}
+.pkbar button.on b{color:var(--navy)}
+nav.tabs button[hidden]{display:none}
+.obj .ohead{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:12px}
+.obj .ohead h2{font-size:1.2rem;margin-bottom:4px}
+.obj .mcq{padding:11px 14px}
+.obj .mcq .opts{flex-direction:column;align-items:stretch}
+.obj .mcq .opts button{text-align:left;border-radius:9px;padding:6px 12px;font-weight:500;font-size:.9rem;white-space:normal}
+.obj .mcq.tf .opts{flex-direction:row}
+.obj .mcq.tf .opts button{flex:0 0 110px;text-align:center;font-weight:600}
+.obj .mcq .kind{font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue2)}
+.obj .mcq.ok{border-color:#BFE3CF}.obj .mcq.no{border-color:#F0C4BF}
 </style>
 </head>
 <body>
@@ -348,7 +367,7 @@ svg>text{pointer-events:none}
   <div>
     <span class="tag">Latihan UTS · Semester I 2026/2027</span>
     <h1>Latihan Soal II3160 Teknologi Sistem Terintegrasi</h1>
-    <div class="sub">38 soal uraian dan 24 soal kilat, semuanya buatan sendiri dari isi slide. Kerjakan dulu di kertas, baru buka jawabannya.</div>
+    <div class="sub"><b>Paket B</b> mengikuti Kisi-Kisi UTS: 90 soal objektif dan 3 essay. <b>Paket A</b> berisi 38 soal uraian dan 24 soal kilat per pertemuan untuk pendalaman. Semua soal buatan sendiri.</div>
   </div>
   <div class="tools">
     <a class="go" href="catatan-uts-tst.html">← Kembali ke catatan materi</a>
@@ -359,22 +378,126 @@ svg>text{pointer-events:none}
     <span class="hint">Kata <u>bergaris titik-titik</u> dan kotak kuning di jawaban bisa di-hover atau diklik untuk penjelasan tambahan.</span>
   </div>
 </div></div>
+<div class="pkbar"><div class="wrap">
+  <button type="button" data-pk="B"><b>Paket B</b><span>Sesuai kisi-kisi · 90 objektif + 3 essay</span></button>
+  <button type="button" data-pk="A"><b>Paket A</b><span>Pendalaman per pertemuan · 38 uraian + 24 kilat</span></button>
+</div></div>
 <nav class="tabs"><div class="wrap" role="tablist">
-  <button data-tab="pa">A · Sistem Terintegrasi</button>
-  <button data-tab="pb">B · Pemodelan &amp; DDD</button>
-  <button data-tab="pc">C · Arsitektur &amp; SOA</button>
-  <button data-tab="pd">D · Microservices &amp; API</button>
-  <button data-tab="pe">E · Representasi Data</button>
-  <button data-tab="pf">F · Praktik Foodmart</button>
-  <button data-tab="pk">Kilat · Benar/Salah</button>
+  <button data-tab="bo1" data-pk="B">B1 · Sistem &amp; Integrasi</button>
+  <button data-tab="bo2" data-pk="B">B2 · DDD</button>
+  <button data-tab="bo3" data-pk="B">B3 · Arsitektur</button>
+  <button data-tab="bo4" data-pk="B">B4 · DFD &amp; UML</button>
+  <button data-tab="bo5" data-pk="B">B5 · Smart System &amp; Event</button>
+  <button data-tab="bo6" data-pk="B">B6 · SOA &amp; Microservices</button>
+  <button data-tab="bo7" data-pk="B">B7 · Data &amp; Encoding</button>
+  <button data-tab="be" data-pk="B">B · Essay</button>
+  <button data-tab="pa" data-pk="A">A1 · Sistem Terintegrasi</button>
+  <button data-tab="pb" data-pk="A">A2 · Pemodelan &amp; DDD</button>
+  <button data-tab="pc" data-pk="A">A3 · Arsitektur &amp; SOA</button>
+  <button data-tab="pd" data-pk="A">A4 · Microservices &amp; API</button>
+  <button data-tab="pe" data-pk="A">A5 · Representasi Data</button>
+  <button data-tab="pf" data-pk="A">A6 · Praktik Foodmart</button>
+  <button data-tab="pk" data-pk="A">A · Kilat</button>
 </div></nav>
 <main>
-<div class="how"><b>Cara pakai.</b> Jawaban tiap subsoal disamarkan. Arahkan kursor ke kotaknya untuk mengintip, klik (atau ketuk di HP) supaya tetap terbuka, klik "tutup" untuk menyamarkan lagi. Centang "selesai" kalau satu soal sudah beres. Progres tersimpan di browser ini saja.<br>
-<b>Tiga jenis soal:</b> <span class="lvl k">Konsep</span> menguji paham arti. <span class="lvl a">Analisis</span> menguji penerapan pada kasus. <span class="lvl i">Implementasi</span> meminta kamu menulis, menghitung, atau merancang.<br>
-<span class="small muted">Tidak ada soal UTS asli di berkas sumber, jadi semua soal di sini saya susun sendiri. Jawabannya mengikuti slide. Untuk soal analisis, jawaban lain bisa benar asalkan alasannya memakai konsep yang sama.</span></div>
+<div class="how"><b>Cara pakai.</b> <b>Paket B</b> adalah prioritas: bentuknya sama dengan ujian (pilihan ganda, benar/salah, dan essay), dan isinya mengikuti tujuh topik kisi-kisi. Pada soal objektif, klik jawaban dan penjelasannya langsung muncul. Pada soal uraian dan essay, jawabannya disamarkan: arahkan kursor untuk mengintip, klik (atau ketuk di HP) supaya tetap terbuka. Progres tersimpan di browser ini saja.<br>
+<span class="small muted">Semua soal saya susun sendiri dari slide dan kisi-kisi, bukan soal ujian asli. Tiga topik essay memang diumumkan di kisi-kisi, tetapi kalimat soalnya di ujian bisa berbeda.</span></div>
+<!-- PAKET B: OBJEKTIF -->
+<section class="panel" id="tab-bo1">
+<div class="obj" data-o="bo1"></div>
+</section>
+<section class="panel" id="tab-bo2">
+<div class="obj" data-o="bo2"></div>
+</section>
+<section class="panel" id="tab-bo3">
+<div class="obj" data-o="bo3"></div>
+</section>
+<section class="panel" id="tab-bo4">
+<div class="obj" data-o="bo4"></div>
+</section>
+<section class="panel" id="tab-bo5">
+<div class="obj" data-o="bo5"></div>
+</section>
+<section class="panel" id="tab-bo6">
+<div class="obj" data-o="bo6"></div>
+</section>
+<section class="panel" id="tab-bo7">
+<div class="obj" data-o="bo7"></div>
+</section>
+<!-- ============================ PAKET B: ESSAY ============================ -->
+<section class="panel" id="tab-be">
+<p class="note">Tiga topik essay ini <b>sudah diumumkan di kisi-kisi</b>, lengkap dengan butir yang dinilai. Tiap subsoal di bawah mengikuti satu butir rubrik. Tulis jawabanmu dulu di kertas, baru buka contoh jawabannya.</p>
+<div class="how" style="background:#fff;border-color:var(--pale)"><b>Cara menulis essay analitis.</b> Kisi-kisi meminta "penjelasan analitis berbasis konsep arsitektur, bukan sekadar definisi hafalan". Pola yang aman untuk tiap butir: <b>(1) sebut konsepnya</b>, <b>(2) jelaskan sebab dan akibatnya</b>, <b>(3) beri contoh pada kasus</b>. Contoh jawaban di bawah memakai pola itu. Kalimatmu tidak harus sama, yang penting ketiga unsur itu ada.</div>
+<div class="jump" data-for="be"></div>
+
+<article class="soal" id="x1" data-t="Microservices: migrasi dan prinsip desain" data-l="a">
+<div class="ctx">
+<p>Sebuah e-commerce dibangun sebagai <b>satu aplikasi monolitik</b>: katalog, keranjang, pesanan, dan pembayaran berada dalam satu kode, satu proses, dan satu database. Tim ingin menambah metode pembayaran baru. Tiap kali modul pembayaran diubah, seluruh aplikasi harus dipasang ulang, dan pernah terjadi seluruh situs mati dua jam karena kesalahan di modul itu.</p>
+<p class="note">Fokus penilaian: kemampuan menganalisis masalah arsitektur monolitik dan memberi argumen yang masuk akal untuk penerapan microservices.</p>
+</div>
+<div class="qq"><p class="qt"><b>a.</b> <span class="pill">Bagian A</span> Jelaskan mengapa perubahan fitur pembayaran pada arsitektur monolitik memicu risiko regresi dan downtime total.</p>
+<div class="ans"><p><b>Konsep:</b> penyebabnya <span class="key" data-why="Kata ini ditulis di kisi-kisi sebagai kunci jawaban butir ini. Usahakan muncul di kalimat pertamamu.">tight coupling</span>. Pada monolitik, semua modul berada dalam satu kode, satu proses, satu deployment, dan satu database, dan modul saling memanggil langsung.</p><p><b>Sebab dan akibat:</b></p><ul><li><b>Risiko regresi.</b> Modul lain (pesanan, keranjang) bisa bergantung pada function atau tabel milik pembayaran. Mengubah pembayaran dapat merusak bagian yang tidak disentuh sama sekali, sehingga seluruh aplikasi harus diuji ulang.</li><li><b>Risiko downtime total.</b> Monolitik hanya punya satu unit deployment. Merilis perubahan kecil di pembayaran berarti membangun dan memasang ulang seluruh aplikasi. Selama itu, atau kalau rilisnya gagal, <b>semua</b> fitur ikut berhenti.</li></ul><p><b>Pada kasus:</b> kesalahan di modul pembayaran mematikan seluruh situs dua jam, padahal katalog dan keranjang tidak ada hubungannya dengan kesalahan itu.</p></div></div>
+<div class="qq"><p class="qt"><b>b.</b> <span class="pill">Bagian A</span> Terangkan bagaimana memecah fungsi pembayaran menjadi Payment Service yang mandiri.</p>
+<div class="ans"><ol><li><b>Tentukan batasnya.</b> Kumpulkan semua aturan dan data pembayaran menjadi satu wilayah (bounded context pembayaran).</li><li><b>Pisahkan kode dan datanya.</b> Kode pembayaran dipindah menjadi layanan tersendiri dengan <span class="key" data-why="Kalau Payment masih memakai database yang sama dengan modul lain, perubahan tabelnya tetap bisa merusak modul lain. Pemisahan kode saja belum cukup.">database miliknya sendiri</span> (database-per-service).</li><li><b>Buat API sebagai satu-satunya pintu.</b> Misalnya <code>POST /payments</code> untuk membayar dan <code>GET /payments/{id}</code> untuk melihat status. Inilah API contract-nya.</li><li><b>Ubah pemanggilnya.</b> Modul pesanan tidak lagi memanggil function atau membaca tabel pembayaran, melainkan memanggil API tadi.</li><li><b>Pasang secara terpisah.</b> Payment Service dijalankan sebagai proses sendiri sehingga bisa dirilis dan diskalakan sendiri.</li></ol></div></div>
+<div class="qq"><p class="qt"><b>c.</b> <span class="pill">Bagian A</span> Sebutkan dan uraikan minimal tiga keunggulan setelah pemecahan itu.</p>
+<div class="ans"><ul><li><b>Independent deployability.</b> Payment Service bisa dirilis tanpa memasang ulang layanan lain. Metode pembayaran baru dapat diluncurkan kapan saja, katalog dan keranjang tetap melayani.</li><li><b>Fault isolation.</b> Kegagalan satu service tidak meruntuhkan service lain. Kalau Payment Service mati, pembeli tetap bisa melihat barang dan mengisi keranjang. Yang terganggu hanya langkah bayar.</li><li><b>Targeted scalability.</b> Kapasitas ditambah hanya pada layanan yang sibuk. Saat gajian, cukup Payment Service yang digandakan. Pada monolitik, seluruh aplikasi harus digandakan.</li></ul><p class="note">Tiga nama keunggulan ini ditulis persis di kisi-kisi, jadi pakai istilah itu. Boleh ditambah: tiap tim bisa bekerja independen, dan tiap layanan boleh memakai teknologi berbeda.</p></div></div>
+<div class="qq"><p class="qt"><b>d.</b> <span class="pill y">Bagian B</span> Definisikan loosely coupled dan independently deployable.</p>
+<div class="ans"><ul><li><b>Loosely coupled:</b> layanan <span class="key">terisolasi</span> dan hanya berkomunikasi lewat <span class="key">API contract</span>, <span class="key">tanpa berbagi database</span>. Perubahan di dalam satu layanan tidak memaksa layanan lain ikut berubah.</li><li><b>Independently deployable:</b> pembaruan kode satu layanan dapat dirilis <span class="key">tanpa membutuhkan deployment ulang modul lain</span>.</li></ul><p><b>Hubungannya:</b> yang kedua adalah akibat dari yang pertama. Layanan baru bisa dirilis sendiri kalau ketergantungannya pada layanan lain memang longgar.</p></div></div>
+<div class="qq"><p class="qt"><b>e.</b> <span class="pill y">Bagian B</span> Berikan contoh konkret alur transaksi e-commerce yang menunjukkan kedua sifat itu, memakai Order Service dan Payment Service.</p>
+<div class="ans"><div class="fig" data-f="x1op"></div><ol><li>Pembeli menekan "Bayar".</li><li><b>Order Service</b> menyimpan pesanan berstatus "menunggu pembayaran" di <b>databasenya sendiri</b>.</li><li>Order Service memanggil <code>POST /payments</code> milik <b>Payment Service</b> dengan nomor pesanan dan jumlah.</li><li>Payment Service memproses pembayaran dan menyimpan transaksinya di <b>databasenya sendiri</b>.</li><li>Payment Service membalas "berhasil". Order Service mengubah status pesanan menjadi "lunas".</li></ol><p><b>Loosely coupled terlihat pada:</b> Order tidak pernah membuka tabel milik Payment. Ia hanya tahu alamat API dan bentuk balasannya.</p><p><b>Independently deployable terlihat pada:</b> tim Payment menambah metode QRIS dan merilisnya hari Selasa. Karena bentuk <code>POST /payments</code> tidak berubah, Order Service tidak perlu disentuh atau dipasang ulang.</p></div></div>
+<div class="qq"><p class="qt"><b>f.</b> <span class="muted small">Pengayaan</span> Sebutkan satu harga yang harus dibayar saat pindah ke microservices, supaya jawabanmu tidak berat sebelah.</p>
+<div class="ans"><p>Memakai layanan lain harus lewat <b>API call</b> lewat jaringan, tidak sesederhana memanggil function. Akibatnya ada jeda tambahan dan lebih banyak hal yang bisa gagal. Kalau pemecahannya terlalu halus, sistem bisa tidak lebih efisien daripada monolitik. Karena itu batas layanan harus dipikirkan dan dimodelkan dulu.</p><p class="note">Butir ini tidak ada di rubrik, tetapi menunjukkan analisis yang berimbang.</p></div></div>
+</article>
+
+<article class="soal" id="x2" data-t="Representasi data: JSON vs XML dan performa mobile" data-l="a">
+<div class="ctx">
+<p>Sebuah bank membuat aplikasi mobile. Server lamanya mengirim data dalam XML. Tim mobile mengusulkan pindah ke JSON karena banyak nasabah mengeluh aplikasi lambat dan boros kuota. Data satu nasabah dalam dua format:</p>
+<div class="two">
+<div><p class="small"><b>JSON</b></p><pre style="white-space:pre-wrap;word-break:break-all">{"id":1024,"nama":"Sari Wijaya","kota":"Bandung","saldo":250000}</pre></div>
+<div><p class="small"><b>XML</b></p><pre style="white-space:pre-wrap;word-break:break-all">&lt;nasabah&gt;&lt;id&gt;1024&lt;/id&gt;&lt;nama&gt;Sari Wijaya&lt;/nama&gt;&lt;kota&gt;Bandung&lt;/kota&gt;&lt;saldo&gt;250000&lt;/saldo&gt;&lt;/nasabah&gt;</pre></div>
+</div>
+<p class="note">Fokus penilaian: pemahaman peran pertukaran data antar sistem yang beragam dan dampaknya pada sumber daya sistem.</p>
+</div>
+<div class="qq"><p class="qt"><b>a.</b> <span class="pill">Bagian A</span> Terangkan mengapa representasi data penting sebagai standar transaksi lintas platform.</p>
+<div class="ans"><p>Sistem yang berintegrasi bersifat <b>heterogen</b>: server bank bisa ditulis dengan Java, aplikasinya dengan Kotlin atau Swift, dan databasenya berbeda lagi. Mereka tidak bisa saling membaca isi memori atau database masing-masing, dan lewat API memang <b>tidak boleh</b> mengakses database secara langsung.</p><p>Karena itu data harus dibungkus dalam <span class="key" data-why="Kalimat slide: representasi data adalah format atau bahasa universal yang digunakan API untuk membungkus dan mengirimkan informasi antara server dan aplikasi pengguna.">format teks terstruktur yang disepakati</span> dan dipahami bahasa pemrograman apa pun. Representasi data (JSON, XML) menjadi "bahasa bersama" itu. Tanpa kesepakatan format, data yang dikirim tidak bisa diartikan penerima.</p></div></div>
+<div class="qq"><p class="qt"><b>b.</b> <span class="pill">Bagian A</span> Bandingkan JSON dan XML berdasarkan struktur, kemudahan, dan efisiensi.</p>
+<div class="ans"><div class="tw"><table><thead><tr><th>Sisi</th><th>JSON</th><th>XML</th></tr></thead><tbody><tr><td><b>Struktur</b></td><td>Key-value. Objek dalam kurung kurawal, daftar dalam kurung siku.</td><td>Tag-based. Data diapit tag pembuka dan penutup, bisa diberi atribut dan namespace.</td></tr><tr><td><b>Kemudahan</b></td><td>Ringkas dan mudah dibaca. Parsing native: langsung menjadi objek di JavaScript dan mudah di bahasa lain.</td><td>Terbaca tetapi lebih ramai. Butuh parser XML, hasilnya pohon elemen yang harus ditelusuri.</td></tr><tr><td><b>Efisiensi</b></td><td>Payload lebih kecil.</td><td>Payload lebih besar karena nama field ditulis dua kali.</td></tr></tbody></table></div><p class="note">Tiga sisi ini ditulis di kisi-kisi. Tambahan yang berimbang: XML unggul untuk dokumen yang butuh atribut, namespace, dan pemeriksaan skema, misalnya web service SOAP.</p></div></div>
+<div class="qq"><p class="qt"><b>c.</b> <span class="pill y">Bagian B</span> Hitung ukuran kedua contoh di atas dalam byte, lalu hitung berapa byte yang bukan data (overhead) pada masing-masing.</p>
+<div class="ans"><ul><li>JSON: <span class="key">64 byte</span>. XML: <span class="key">97 byte</span>.</li><li>Data murni: <code>1024</code> (4) + <code>Sari Wijaya</code> (11) + <code>Bandung</code> (7) + <code>250000</code> (6) = <b>28 byte</b>.</li><li>Overhead JSON: 64 − 28 = <b>36 byte</b>. Overhead XML: 97 − 28 = <b>69 byte</b>.</li><li>XML lebih besar 33 byte. JSON lebih hemat 33 / 97 = sekitar <span class="key">34%</span>.</li></ul><p class="note">Di ujian kamu tidak perlu menghitung sampai tepat. Yang penting bisa menunjukkan bahwa overhead XML hampir dua kali overhead JSON, lengkap dengan alasannya.</p></div></div>
+<div class="qq"><p class="qt"><b>d.</b> <span class="pill y">Bagian B</span> Beri alasan matematis mengapa JSON lebih hemat overhead dibanding XML.</p>
+<div class="ans"><p>Lihat biaya menulis <b>satu field</b> yang namanya <i>n</i> huruf:</p><ul><li><b>XML:</b> <code>&lt;nama&gt;</code> butuh n + 2 byte dan <code>&lt;/nama&gt;</code> butuh n + 3 byte. Total <span class="key">2n + 5</span>.</li><li><b>JSON:</b> <code>"nama":</code> butuh <span class="key">n + 3</span> byte (dua kutip dan satu titik dua).</li></ul><p>Untuk <i>nama</i> (n = 4): XML 13 byte, JSON 7 byte. Selisihnya n + 2 byte per field, dan <b>makin panjang nama field, makin besar selisihnya</b>. Karena nama field berulang di setiap data, selisih ini berlipat sesuai jumlah data.</p><p><b>Pada skala besar:</b> untuk 100 data nasabah, JSON 6.501 byte dan XML 9.717 byte. Selisihnya 3.216 byte per permintaan. Kalau aplikasi meminta 50 kali sehari, dalam 30 hari selisihnya sekitar <b>4,8 MB</b> kuota untuk satu nasabah.</p></div></div>
+<div class="qq"><p class="qt"><b>e.</b> <span class="pill y">Bagian B</span> Analisis pengaruh format data terhadap bandwidth jaringan seluler, latency, dan efisiensi CPU serta baterai.</p>
+<div class="ans"><ul><li><b>Bandwidth.</b> Payload lebih besar memakai lebih banyak kuota dan kapasitas jaringan. Di jaringan seluler yang lambat atau tidak stabil, tiap byte tambahan terasa.</li><li><b>Latency.</b> Waktu tunggu pengguna = waktu kirim + waktu olah. Lebih banyak byte berarti lebih lama dikirim, dan format yang lebih rumit berarti lebih lama diurai. Keduanya menambah jeda sebelum layar terisi.</li><li><b>CPU dan baterai.</b> Mengurai XML lebih berat: harus mencocokkan tag pembuka dan penutup, mengurus atribut dan namespace, lalu membangun pohon elemen. Kerja CPU yang lebih banyak menguras baterai. Radio seluler yang menyala lebih lama untuk mengunduh juga menguras baterai.</li></ul><p><b>Kesimpulan untuk kasus:</b> usul pindah ke JSON masuk akal. Payload turun sekitar sepertiga, sehingga aplikasi lebih cepat dan lebih hemat kuota. XML tetap bisa dipakai untuk sambungan ke sistem lama di sisi server.</p></div></div>
+</article>
+
+<article class="soal" id="x3" data-t="Character encoding dan XML namespace" data-l="a">
+<div class="ctx">
+<p>Sebuah bank menggabungkan data dari dua sistem. <b>Sistem pembukaan rekening</b> yang baru menyimpan teks dalam UTF-8. <b>Sistem inti</b> yang lama membaca teks sebagai 1 byte per karakter. Nasabah bernama <b>José</b> mengeluh namanya tampil sebagai <b>JosÃ©</b> di buku tabungan. Selain itu, laporan gabungan dalam XML memuat dua elemen <code>&lt;id&gt;</code>: satu untuk nomor nasabah dan satu untuk nomor transaksi.</p>
+<p class="note">Fokus penilaian: kemampuan teknis menangani masalah keutuhan data teks dan konflik penamaan skema.</p>
+</div>
+<div class="qq"><p class="qt"><b>a.</b> <span class="pill">Bagian A</span> Jelaskan fungsi encoding.</p>
+<div class="ans"><p><b>Character encoding</b> adalah aturan untuk <span class="key">mengubah karakter teks menjadi byte biner</span> supaya bisa disimpan dan dikirim komputer, dan mengubahnya kembali menjadi karakter di sisi penerima.</p><p>Komputer hanya mengenal angka. Encoding adalah "kamus" yang memasangkan tiap karakter dengan angkanya. Contoh: huruf A menjadi byte <code>41</code> di ASCII dan UTF-8. Huruf é menjadi dua byte <code>C3 A9</code> di UTF-8.</p><p><b>Syaratnya:</b> pengirim dan penerima harus memakai kamus yang sama.</p></div></div>
+<div class="qq"><p class="qt"><b>b.</b> <span class="pill">Bagian A</span> Analisis mengapa "José" berubah menjadi "JosÃ©". Apa nama gejalanya?</p>
+<div class="ans"><ol><li>Sistem baru menulis "José" dalam UTF-8: <code>4A 6F 73 C3 A9</code>. Huruf é (U+00E9) berada di luar ASCII, jadi memakai <b>2 byte</b>.</li><li>Sistem lama membaca <b>1 byte = 1 karakter</b>. Tiga byte pertama terbaca benar (J, o, s) karena ASCII sama di kedua aturan.</li><li>Byte <code>C3</code> terbaca sebagai "Ã" dan byte <code>A9</code> terbaca sebagai "©". Satu huruf berubah menjadi dua simbol aneh.</li></ol><p>Gejalanya disebut <span class="key" data-why="Istilah Jepang 文字化け yang ditulis di slide. Artinya kurang lebih 'huruf yang berubah wujud'.">mojibake</span>, akibat <b>mismatch encoding</b>: byte ditulis dengan satu aturan tetapi dibaca dengan aturan lain.</p><p class="note">Kalau sistem lama hanya mengenal ASCII (7 bit), hasilnya bisa lain: huruf yang tidak dikenal diganti "?" sehingga menjadi "Jos?".</p></div></div>
+<div class="qq"><p class="qt"><b>c.</b> <span class="pill">Bagian A</span> Apa dampaknya pada sistem perbankan atau data identitas? Beri contoh dan cara mencegahnya.</p>
+<div class="ans"><p><b>Dampak:</b> keutuhan data teks rusak, dan akibatnya merembet ke proses bisnis.</p><ul><li><b>Verifikasi identitas gagal.</b> Nama di bank ("JosÃ©") tidak cocok dengan nama di data kependudukan ("José"). Pembukaan rekening, pengajuan kredit, atau transfer bisa ditolak otomatis.</li><li><b>Dokumen resmi salah cetak.</b> Buku tabungan, kartu, dan surat tertulis dengan nama rusak.</li><li><b>Pencarian tidak menemukan nasabah.</b> Petugas mengetik "José", sistem menyimpan "JosÃ©".</li><li><b>Data ganda.</b> Orang yang sama tercatat dua kali dengan ejaan berbeda.</li></ul><p><b>Pencegahan:</b> sepakati satu encoding di semua titik (umumnya UTF-8), nyatakan dengan jelas di tiap pertukaran data (misalnya <code>encoding="UTF-8"</code> pada deklarasi XML atau <code>charset=UTF-8</code> pada balasan API), dan uji dengan nama berhuruf khusus sebelum sistem dipakai.</p><p class="note">Contoh kasusnya boleh berbeda. Yang dinilai adalah rantai sebab akibatnya: salah encoding, karakter rusak, data tidak cocok, proses bisnis terganggu.</p></div></div>
+<div class="qq"><p class="qt"><b>d.</b> <span class="pill y">Bagian B</span> Terangkan penyebab konflik penamaan saat dua elemen <code>&lt;id&gt;</code> yang berbeda makna digabungkan.</p>
+<pre>&lt;laporan&gt;
+    &lt;id&gt;N-1024&lt;/id&gt;
+    &lt;id&gt;TRX-88213&lt;/id&gt;
+&lt;/laporan&gt;</pre>
+<div class="ans"><p>Dua skema data dibuat <b>terpisah</b> oleh dua tim. Masing-masing bebas memilih nama tag (XML memang <i>extensible</i>), dan keduanya memilih nama yang wajar: <code>&lt;id&gt;</code>.</p><p>Selama terpisah tidak ada masalah. Begitu <b>digabung dalam satu dokumen</b>, ada dua elemen bernama sama dengan makna berbeda. Program pembaca hanya melihat nama tag, jadi <span class="key">tidak bisa membedakan</span> mana id nasabah dan mana id transaksi. Akibatnya nomor transaksi bisa terbaca sebagai nomor nasabah.</p></div></div>
+<div class="qq"><p class="qt"><b>e.</b> <span class="pill y">Bagian B</span> Jelaskan mekanisme penulisan namespace dengan prefix dan URI unik, lalu perbaiki dokumen di atas.</p>
+<div class="ans"><pre>&lt;laporan xmlns:nsb="http://bank.example/nasabah"
+         xmlns:trx="http://bank.example/transaksi"&gt;
+    &lt;nsb:id&gt;N-1024&lt;/nsb:id&gt;
+    &lt;trx:id&gt;TRX-88213&lt;/trx:id&gt;
+&lt;/laporan&gt;</pre><ol><li><b>Deklarasi.</b> Tiap domain data diberi namespace dengan atribut <code>xmlns:prefix="URI"</code>. <span class="key" data-why="URI dipakai karena mudah dibuat unik: tiap organisasi punya nama domain sendiri. Program tidak membuka alamat itu.">URI harus unik</span> untuk tiap domain.</li><li><b>Prefix.</b> Awalan pendek (<code>nsb</code>, <code>trx</code>) mewakili URI itu, lalu ditempel di depan nama elemen dengan titik dua.</li><li><b>Hasil.</b> Program mengenali elemen dari gabungan URI dan nama. <code>nsb:id</code> dan <code>trx:id</code> menjadi dua nama yang berbeda, sehingga data terpisah menurut domainnya.</li></ol><p class="note">Nama prefix bebas. Yang membedakan adalah URI-nya, bukan huruf prefix-nya.</p></div></div>
+</article>
+</section>
 <!-- ============================ PAKET A ============================ -->
 <section class="panel" id="tab-pa">
-<p class="note">Paket A menguji <b>Pertemuan 1</b>: sistem, smart system, arah integrasi, system integrator, standar, penghubung, dan pengalaman pengguna.</p>
+<p class="note">Bagian A1 menguji <b>Pertemuan 1</b>: sistem, smart system, arah integrasi, system integrator, standar, penghubung, dan pengalaman pengguna.</p>
 <div class="jump" data-for="pa"></div>
 
 <article class="soal" id="a1" data-t="Parkir pintar kampus" data-l="a">
@@ -467,7 +590,7 @@ svg>text{pointer-events:none}
 </section>
 <!-- ============================ PAKET B ============================ -->
 <section class="panel" id="tab-pb">
-<p class="note">Paket B menguji <b>Pertemuan 2</b>: model dan abstraksi, DFD, UML, ubiquitous language, dan Domain-Driven Design.</p>
+<p class="note">Bagian A2 menguji <b>Pertemuan 2</b>: model dan abstraksi, DFD, UML, ubiquitous language, dan Domain-Driven Design.</p>
 <div class="jump" data-for="pb"></div>
 
 <article class="soal" id="b1" data-t="Model, abstraksi, dan dua tingkat model" data-l="k">
@@ -562,7 +685,7 @@ svg>text{pointer-events:none}
 </section>
 <!-- ============================ PAKET C ============================ -->
 <section class="panel" id="tab-pc">
-<p class="note">Paket C menguji <b>Pertemuan 3</b>: arsitektur, delapan gaya arsitektur, SOA, sembilan lapisan SOA, tingkat pola, dan MVC.</p>
+<p class="note">Bagian A3 menguji <b>Pertemuan 3</b>: arsitektur, delapan gaya arsitektur, SOA, sembilan lapisan SOA, tingkat pola, dan MVC.</p>
 <div class="jump" data-for="pc"></div>
 
 <article class="soal" id="c1" data-t="Memilih gaya arsitektur" data-l="a">
@@ -677,7 +800,7 @@ svg>text{pointer-events:none}
 </section>
 <!-- ============================ PAKET D ============================ -->
 <section class="panel" id="tab-pd">
-<p class="note">Paket D menguji <b>Pertemuan 4 bagian pertama</b>: loosely coupled, kelemahan SOA, microservices, granularity, API, dan ekonomi API.</p>
+<p class="note">Bagian A4 menguji <b>Pertemuan 4 bagian pertama</b>: loosely coupled, kelemahan SOA, microservices, granularity, API, dan ekonomi API.</p>
 <div class="jump" data-for="pd"></div>
 
 <article class="soal" id="d1" data-t="Longgar dan bisa dipasang sendiri" data-l="k">
@@ -782,7 +905,7 @@ svg>text{pointer-events:none}
 </section>
 <!-- ============================ PAKET E ============================ -->
 <section class="panel" id="tab-pe">
-<p class="note">Paket E menguji <b>Pertemuan 4 bagian kedua</b>: ASCII, Unicode, UTF-8, UTF-16, XML, JSON, dan YAML. Hampir semuanya hitungan atau menulis. Tombol <b>"Alat encoding"</b> di pojok kanan bawah bisa dipakai untuk memeriksa jawabanmu.</p>
+<p class="note">Bagian A5 menguji <b>Pertemuan 4 bagian kedua</b>: ASCII, Unicode, UTF-8, UTF-16, XML, JSON, dan YAML. Hampir semuanya hitungan atau menulis. Tombol <b>"Alat encoding"</b> di pojok kanan bawah bisa dipakai untuk memeriksa jawabanmu.</p>
 <div class="jump" data-for="pe"></div>
 
 <article class="soal" id="e1" data-t="Membaca tabel ASCII" data-l="i">
@@ -935,7 +1058,7 @@ svg>text{pointer-events:none}
 </div>
 <div class="qq"><p class="qt"><b>a.</b> Pilih format untuk tiap kebutuhan beserta alasannya.</p>
 <div class="ans"><ol><li><b>YAML.</b> Dirancang supaya mudah dibaca manusia dan umum untuk file konfigurasi.</li><li><b>JSON.</b> Ringkas dan menjadi format umum REST API serta microservices.</li><li><b>XML.</b> SOAP adalah web service berbasis XML.</li></ol></div></div>
-<div class="qq"><p class="qt"><b>b.</b> Tuliskan JSON pada soal E6 (a) dalam YAML.</p>
+<div class="qq"><p class="qt"><b>b.</b> Tuliskan JSON pada soal A5.6 (a) dalam YAML.</p>
 <div class="ans"><pre>nama: Wati
 nim: "18211345"
 angkatan: 2021
@@ -954,7 +1077,7 @@ mataKuliah:
 </section>
 <!-- ============================ PAKET F ============================ -->
 <section class="panel" id="tab-pf">
-<p class="note">Paket F menguji <b>penerapan pada kasus Foodmart</b>: merancang endpoint, membaca context map, memilih pola hubungan, menelusuri integrasi, dan MVC di CodeIgniter 4.</p>
+<p class="note">Bagian A6 menguji <b>penerapan pada kasus Foodmart</b>: merancang endpoint, membaca context map, memilih pola hubungan, menelusuri integrasi, dan MVC di CodeIgniter 4.</p>
 <div class="jump" data-for="pf"></div>
 
 <article class="soal" id="f1" data-t="Merancang endpoint untuk service baru" data-l="i">
@@ -1172,6 +1295,7 @@ $routes-&gt;get('products/(:num)', 'Products::show/$1');</pre><p><code>(:num)</c
       if (n.sh === 'ell' || n.sh === 'circ') s += '<ellipse cx="' + n.x + '" cy="' + n.y + '" rx="' + n.w / 2 + '" ry="' + n.h / 2 + '" fill="' + f + '" stroke="' + st + '" stroke-width="1.8"/>';
       else if (n.sh === 'cyl') { const r = 7; s += '<path d="M' + x + ',' + (y + r) + ' v' + (n.h - 2 * r) + ' a' + n.w / 2 + ',' + r + ' 0 0 0 ' + n.w + ',0 v-' + (n.h - 2 * r) + ' a' + n.w / 2 + ',' + r + ' 0 0 0 -' + n.w + ',0 a' + n.w / 2 + ',' + r + ' 0 0 0 ' + n.w + ',0" fill="' + f + '" stroke="' + st + '" stroke-width="1.8"/>'; }
       else if (n.sh === 'hex') { const q = Math.min(n.w * 0.22, 26); s += '<path d="M' + (x + q) + ',' + y + ' h' + (n.w - 2 * q) + ' l' + q + ',' + n.h / 2 + ' l-' + q + ',' + n.h / 2 + ' h-' + (n.w - 2 * q) + ' l-' + q + ',-' + n.h / 2 + ' z" fill="' + f + '" stroke="' + st + '" stroke-width="1.8"/>'; }
+      else if (n.sh === 'dia') s += '<path d="M' + n.x + ',' + y + ' L' + (x + n.w) + ',' + n.y + ' L' + n.x + ',' + (y + n.h) + ' L' + x + ',' + n.y + ' z" fill="' + f + '" stroke="' + st + '" stroke-width="1.8"/>';
       else if (n.sh === 'store') s += '<path d="M' + x + ',' + y + ' h' + n.w + ' M' + x + ',' + (y + n.h) + ' h' + n.w + '" fill="none" stroke="' + st + '" stroke-width="2.2"/><rect x="' + x + '" y="' + y + '" width="' + n.w + '" height="' + n.h + '" fill="' + f + '" fill-opacity=".6" stroke="none"/>';
       else s += '<rect x="' + x + '" y="' + y + '" width="' + n.w + '" height="' + n.h + '" rx="' + (n.rx == null ? 9 : n.rx) + '" fill="' + f + '" stroke="' + st + '" stroke-width="1.8"' + (n.dash ? ' stroke-dasharray="6 4"' : '') + '/>';
       const L = String(n.t == null ? n.id : n.t).split('\n'), lh = fs + 3, y0 = n.y - (L.length - 1) * lh / 2 + fs * 0.36;
@@ -1425,8 +1549,138 @@ window.TST_GLOSS = [
   [['superset'], 'A superset dari B artinya semua yang sah di B juga sah di A, dan A punya tambahan lain.', 'Setiap dokumen JSON yang sah juga YAML yang sah.'],
   [['CSV'], 'Comma-Separated Values: data tabel sederhana, tiap baris satu data, tiap kolom dipisah koma.', ''],
   [['key/value', 'key-value'], 'Pasangan nama dan nilai.', '"kota": "Bandung"'],
+  [['processing'], 'Tahap kedua smart system menurut kisi-kisi: mengolah data mentah dari sensor (dibersihkan, digabung, dihitung) sebelum bisa dipahami.', 'Bacaan suhu tiap detik dirata-rata per menit.'],
+  [['service registry'], 'Buku alamat layanan. Tiap layanan mendaftarkan nama dan alamatnya, dan layanan lain bertanya ke sini untuk menemukannya.', ''],
+  [['fault isolation'], 'Kegagalan satu service tidak meruntuhkan service lain.', 'Layanan pembayaran mati, katalog tetap bisa dibuka.'],
+  [['targeted scalability'], 'Kapasitas ditambah hanya pada layanan yang sedang sibuk, bukan seluruh aplikasi.', ''],
+  [['database-per-service'], 'Tiap layanan memegang databasenya sendiri dan tidak berbagi tabel dengan layanan lain.', ''],
+  [['API contract'], 'Kesepakatan bentuk API: alamatnya, data yang dikirim, dan bentuk balasannya. Selama kontrak ini tetap, isi layanan boleh berubah.', 'POST /payments menerima order_id dan jumlah, membalas status.'],
+  [['independent deployability', 'independent deployment'], 'Satu layanan bisa dirilis tanpa memasang ulang layanan lain.', ''],
+  [['activity diagram'], 'Diagram UML yang menggambarkan aliran aktivitas atau proses bisnis: urutan langkah, percabangan, dan kegiatan yang berjalan bersamaan.', ''],
+  [['Ports & Adapters', 'Ports &amp; Adapters'], 'Nama lain hexagonal architecture. Port adalah colokan yang ditentukan domain, adapter adalah steker yang menghubungkannya ke satu teknologi.', ''],
+  [['payload'], 'Isi data yang dikirim dalam satu permintaan atau balasan. Ukurannya dihitung dalam byte.', ''],
+  [['bandwidth'], 'Kapasitas jaringan untuk mengalirkan data. Payload yang lebih besar memakai lebih banyak bandwidth dan kuota.', ''],
+  [['overhead'], 'Byte tambahan yang bukan data itu sendiri, misalnya tanda kurung, kutip, dan nama tag.', ''],
+  [['parsing', 'parser'], 'Mengurai teks (JSON atau XML) menjadi struktur data yang bisa dipakai program.', ''],
+  [['mojibake'], 'Teks yang berubah menjadi karakter acak karena dibaca dengan encoding yang berbeda dari saat ditulis.', '"José" terbaca "JosÃ©".'],
+  [['regresi', 'regression'], 'Bagian yang sebelumnya berjalan baik menjadi rusak akibat perubahan di tempat lain.', ''],
+  [['downtime'], 'Waktu saat sistem tidak bisa dipakai.', ''],
+  [['decoupled'], 'Terpisah: dua pihak tidak saling bergantung langsung.', 'Publisher dan subscriber hanya sama-sama mengenal broker.'],
+  [['prefix'], 'Awalan pendek di depan nama elemen XML yang menunjukkan namespace-nya.', 'nsb:id'],
+  [['heterogen'], 'Beraneka ragam: sistem-sistem yang bahasa, database, atau platformnya berbeda.', ''],
   [['CodeIgniter', 'CI4'], 'Framework PHP yang memakai pola MVC. Dipakai di hands-on kuliah ini untuk membuat API.', '']
 ];
+
+</script>
+<script>
+/* ===== Paket B: 90 soal objektif mengikuti kisi-kisi =====
+   Pilihan ganda: [soal, [pilihan], indeks benar, alasan]. Benar/salah: [soal, true|false, alasan]. */
+window.LB_OBJ = {
+  bo1: { t: 'Konsep Sistem & Integrasi', k: 'Definisi sistem, fungsi interface, komponen integrasi (proses, data, teknologi, organisasi), dan kompleksitas sistem modern.', q: [
+    ['Menurut ISO/IEC/IEEE 15288, sistem adalah...', ['Sekumpulan perangkat keras yang terhubung jaringan', 'Kombinasi elemen yang saling berinteraksi dan diatur untuk mencapai satu atau lebih tujuan', 'Program komputer yang mengolah data menjadi informasi', 'Kumpulan database milik satu organisasi'], 1, 'Kata kuncinya: elemen yang berinteraksi dan tujuan. Sistem tidak harus berupa komputer.'],
+    ['Definisi INCOSE menyebut elemen sistem mencakup produk, proses, orang, informasi, teknik, fasilitas, dan layanan. Pesan utamanya adalah...', ['Sistem hanya terdiri dari hardware dan software', 'Manusia dan proses juga bagian dari sistem', 'Sistem harus memakai teknologi terbaru', 'Sistem selalu berukuran besar'], 1, 'INCOSE paling lengkap: manusia, proses, dan informasi ikut dihitung sebagai elemen sistem.'],
+    ['Secara bahasa, sistem berarti sekelompok elemen yang independen namun saling terkait sebagai satu kesatuan.', true, 'Berasal dari kata Latin systema, "hubungan yang teratur".'],
+    ['Fungsi utama interface dalam sistem terintegrasi adalah...', ['Menyimpan data kedua sistem di satu tempat', 'Menjadi titik pertemuan (boundary) yang memungkinkan dua sistem berinteraksi dan bertukar informasi', 'Mempercepat prosesor server', 'Menggantikan salah satu sistem'], 1, 'Analogi slide: bahasa di antara dua orang. Sistem A, interface, Sistem B.'],
+    ['Agar bisa memakai interface milik Sistem B, Sistem A harus mengetahui seluruh cara kerja internal Sistem B.', false, 'Justru sebaliknya. Interface membuat Sistem A cukup tahu cara memakai titik pertemuan itu, tanpa tahu isi dalam Sistem B.'],
+    ['Empat komponen integrasi yang disebut kisi-kisi adalah...', ['Input, proses, output, umpan balik', 'Proses, data, teknologi, organisasi', 'Hardware, software, jaringan, pengguna', 'Sensing, processing, understanding, acting'], 1, 'Integrasi menyatukan alur kerja (proses), arti dan format data, teknologi penghubung, serta orang dan aturannya (organisasi).'],
+    ['Dua kantor cabang sudah terhubung lewat API, tetapi yang satu menulis tanggal "11/10/2026" dan yang lain "2026-10-11" sehingga laporan gabungan kacau. Komponen integrasi yang bermasalah adalah...', ['Proses', 'Data', 'Teknologi', 'Organisasi'], 1, 'Sambungannya (teknologi) sudah ada. Yang belum sama adalah format dan arti datanya.'],
+    ['Tugas system integrator pada dasarnya hanya membuat API penghubung antar sistem.', false, 'API hanya salah satu mekanisme teknis. System integrator adalah orkestrator teknologi, data, proses bisnis, organisasi, dan manusia.'],
+    ['Penyebab utama sistem modern menjadi makin kompleks menurut slide adalah...', ['Harga perangkat keras yang turun', 'Peningkatan dan keragaman kebutuhan manusia', 'Bertambahnya jumlah programmer', 'Munculnya bahasa pemrograman baru'], 1, 'Makin beragam kebutuhan, makin banyak fungsi yang harus dipenuhi sistem.'],
+    ['Empat hal yang jumlahnya meningkat dan membuat persoalan modern kompleks adalah...', ['Komponen, interaksi, aktor, dan batasan', 'Server, kabel, listrik, dan pendingin', 'Data, tabel, kolom, dan baris', 'Bug, error, patch, dan versi'], 0, 'Slide: jumlah komponen, interaksi, aktor, dan batasan yang harus dipertimbangkan meningkat.'],
+    ['Sistem kompleks baru muncul setelah ada teknologi komputer modern.', false, 'Sistem kompleks sudah ada sebelumnya, hanya dikerjakan manual: butuh banyak orang, keputusan lambat, dan rawan salah catat.'],
+    ['Hubungan antara dekomposisi dan integrasi adalah...', ['Keduanya istilah yang sama', 'Dekomposisi memecah sistem supaya bisa dipahami, integrasi menyatukan kembali supaya bekerja sebagai satu kesatuan', 'Dekomposisi dilakukan setelah integrasi selesai', 'Integrasi hanya diperlukan jika dekomposisi gagal'], 1, 'Dua gerakan yang berpasangan: pecah untuk memahami, satukan untuk bekerja.']
+  ] },
+  bo2: { t: 'Domain-Driven Design', k: 'Bounded context, ubiquitous language, klasifikasi domain (core, supporting, generic), dinamika keunggulan strategis, dan dampak ambiguitas istilah.', q: [
+    ['Dalam DDD, "domain" adalah...', ['Alamat situs web perusahaan', 'Bidang masalah atau area bisnis di dunia nyata yang ingin diselesaikan sistem', 'Database utama aplikasi', 'Framework yang dipakai tim'], 1, 'Domain bukan aplikasi, database, atau teknologi. Domain adalah dunia nyata yang dimodelkan.'],
+    ['Klasifikasi subdomain menjadi core, supporting, dan generic didasarkan pada...', ['Kerumitan teknis pembuatannya', 'Nilai bisnis strategisnya', 'Jumlah baris kodenya', 'Urutan waktu pembuatannya'], 1, 'Kisi-kisi menegaskan: berdasarkan nilai bisnis strategis, bukan kerumitan teknis.'],
+    ['Core domain adalah bagian yang...', ['Paling sulit dibuat secara teknis', 'Memberi keunggulan kompetitif dan membedakan perusahaan dari pesaing', 'Dimiliki hampir semua organisasi', 'Sebaiknya dibeli dari pihak ketiga'], 1, 'Core domain mendapat alokasi sumber daya terbesar.'],
+    ['Fungsi pendukung yang spesifik untuk suatu bisnis, dikembangkan sendiri, tetapi tidak memberi keunggulan kompetitif langsung disebut...', ['Core domain', 'Supporting subdomain', 'Generic subdomain', 'Bounded context'], 1, 'Spesifik dan dibuat sendiri, tetapi bukan pembeda: supporting.'],
+    ['Manakah yang paling tepat dikelompokkan sebagai generic subdomain?', ['Algoritma pencocokan driver pada aplikasi ojek online', 'Mesin rekomendasi yang menjadi alasan pelanggan memilih sebuah toko', 'Autentikasi (login), payroll, dan HRM', 'Algoritma peringkat pada mesin pencari'], 2, 'Contoh di kisi-kisi: Auth, Payroll, HRM. Tersedia sebagai produk komersial atau pihak ketiga.'],
+    ['Modul enkripsi yang sangat rumit secara teknis otomatis termasuk core domain.', false, 'Kerumitan teknis bukan ukurannya. Kalau semua perusahaan butuh hal yang sama dan bisa dibeli jadi, itu generic.'],
+    ['Sumber daya terbaik (talenta dan anggaran terbesar) sebaiknya dialokasikan ke...', ['Generic subdomain, supaya cepat selesai', 'Supporting subdomain, karena paling banyak jumlahnya', 'Core domain', 'Dibagi sama rata'], 2, 'Core mendapat alokasi terbesar, supporting dicukupkan, generic memakai solusi siap pakai.'],
+    ['Yang dimaksud dinamika keunggulan strategis adalah...', ['Klasifikasi core, supporting, dan generic bisa berubah seiring waktu', 'Core domain tidak pernah berubah sejak perusahaan berdiri', 'Semua subdomain pada akhirnya menjadi core', 'Generic subdomain harus selalu dibuat sendiri'], 0, 'Pembeda hari ini bisa menjadi hal biasa besok (core menjadi generic), dan fungsi pendukung bisa naik menjadi core.'],
+    ['Sebuah fitur yang dulu menjadi pembeda, kini ditiru semua pesaing dan dijual sebagai produk jadi. Langkah yang paling sesuai adalah...', ['Menambah tim terbaik untuk mengembangkannya lagi', 'Memperlakukannya sebagai generic dan memindahkan sumber daya ke pembeda baru', 'Menghapus fitur itu', 'Menjadikannya bounded context terpisah tanpa perubahan lain'], 1, 'Saat daya bedanya hilang, nilainya turun menjadi generic. Sumber daya terbaik dipindahkan ke core yang baru.'],
+    ['Bounded context adalah...', ['Batas tempat satu model dan satu bahasa berlaku dengan arti yang konsisten', 'Batas jumlah pengguna sebuah aplikasi', 'Tabel database yang dipakai bersama semua tim', 'Daftar istilah teknis milik programmer'], 0, 'Di luar batas itu, kata yang sama boleh berarti lain.'],
+    ['Ubiquitous language adalah...', ['Bahasa pemrograman yang dipakai semua tim', 'Bahasa bersama yang dipakai konsisten oleh ahli domain dan pengembang, sampai ke nama class, API, dan tabel', 'Bahasa Inggris sebagai bahasa resmi dokumentasi', 'Kumpulan singkatan teknis'], 1, 'Satu tim, satu bahasa.'],
+    ['Tim penjualan dan tim gudang memakai kata "pesanan" dengan arti berbeda, sehingga laporan keduanya tidak pernah cocok. Ini contoh...', ['Vendor lock-in', 'Ambiguitas istilah', 'Single point of failure', 'Fault isolation'], 1, 'Satu kata dengan dua arti. Dampaknya salah paham, kebutuhan salah diterjemahkan, dan data yang digabung menjadi salah.'],
+    ['Subdomain berasal dari problem domain (dunia bisnis), sedangkan bounded context berasal dari solution domain (dunia perangkat lunak).', true, 'Domain expert dan technical expert bekerja sama menerjemahkan subdomain menjadi bounded context.'],
+    ['Cara terbaik mengatasi kata "Mahasiswa" yang berarti berbeda di Akademik, Keuangan, dan Perpustakaan adalah membuat satu model Mahasiswa raksasa untuk seluruh universitas.', false, 'Tidak ada satu model yang cocok untuk seluruh organisasi. Modelnya dipisah per bounded context.']
+  ] },
+  bo3: { t: 'Arsitektur Perangkat Lunak', k: 'Membandingkan monolithic, layered, client-server, hexagonal, pipe & filter, serta membedakan architectural style dan design pattern.', q: [
+    ['Arsitektur monolitik adalah gaya yang...', ['Membagi fungsi menjadi layanan independen', 'Menyatukan semua fungsi dalam satu unit: satu proyek, satu proses, satu deployment', 'Menempatkan domain di tengah dan teknologi di tepi', 'Mengalirkan data lewat tahap-tahap'], 1, 'Kisi-kisi: monolitik menyatukan semua fungsi dalam satu unit.'],
+    ['Salah satu kelemahan arsitektur monolitik adalah...', ['Sulit menelusuri bug karena kode tersebar di banyak layanan', 'Kapasitas tidak bisa ditambah hanya untuk satu komponen', 'Harus melakukan API call untuk memanggil fungsi lain', 'Tiap modul memakai bahasa pemrograman berbeda'], 1, 'Scaling pada monolitik harus menggandakan seluruh aplikasi. Kelemahan lainnya tight coupling.'],
+    ['Prinsip utama layered architecture adalah...', ['Fault isolation', 'Separation of concerns', 'Publish and subscribe', 'Stored-program concept'], 1, 'Tiap lapisan menangani satu jenis pekerjaan.'],
+    ['Tiga urusan yang dipisahkan layered architecture menurut kisi-kisi adalah...', ['Model, view, controller', 'Presentation, logic, data', 'Sensing, understanding, acting', 'Source, filter, sink'], 1, 'Slide merincinya menjadi empat lapisan: Presentation, Business Logic, Data Access, Database.'],
+    ['Pada layered architecture, lapisan presentation boleh langsung mengakses lapisan database.', false, 'Tiap lapisan hanya berinteraksi dengan lapisan tepat di atas atau di bawahnya.'],
+    ['Pada client-server, pihak yang menjalankan logika bisnis, mengakses database, dan mengelola keamanan adalah...', ['Client', 'Server', 'Broker', 'Filter'], 1, 'Client menampilkan antarmuka dan mengirim permintaan. Server menyediakan layanan.'],
+    ['Hexagonal architecture bertujuan...', ['Mempercepat pengolahan gambar', 'Mengisolasi domain inti dari ketergantungan teknologi dan framework luar', 'Menyatukan semua fungsi dalam satu unit', 'Menghapus kebutuhan akan database'], 1, 'Domain bisnis menjadi pusat sistem dan tidak bergantung pada teknologi.'],
+    ['Mekanisme yang dipakai hexagonal architecture untuk mengisolasi domain adalah...', ['Pipes dan filters', 'Ports dan adapters', 'Publisher dan subscriber', 'Client dan server'], 1, 'Port ditentukan domain, adapter menghubungkannya ke teknologi tertentu dan bisa diganti.'],
+    ['Hexagonal architecture cocok ketika kompleksitas bisnis lebih penting daripada kompleksitas teknologinya.', true, 'Ini kalimat slide. Hati-hati, rangkuman yang beredar menulis kebalikannya.'],
+    ['Gaya arsitektur yang paling cocok untuk pemrosesan data sekuensial bertahap seperti pengolahan citra adalah...', ['Client-server', 'Hexagonal', 'Pipe and filter', 'Monolithic'], 2, 'Filter memproses, pipe mengalirkan hasilnya ke filter berikutnya.'],
+    ['Pada pipe and filter, komponen yang bertugas mengubah atau memproses data adalah pipe.', false, 'Filter yang memproses. Pipe hanya mengalirkan data tanpa mengubahnya.'],
+    ['Perbedaan architectural style dan design pattern adalah...', ['Style mengatur struktur seluruh sistem, design pattern menyelesaikan masalah desain di tingkat objek atau kelas', 'Style hanya untuk aplikasi web, design pattern untuk mobile', 'Style ditulis dalam kode, design pattern digambar', 'Keduanya sama, hanya beda nama'], 0, 'Cakupan style luas (sistem), cakupan design pattern sempit (modul atau kelas).'],
+    ['Pasangan mana yang benar?', ['Observer: architectural style. Microservices: design pattern', 'Factory: design pattern. Layered: architectural style', 'MVC: language idiom. SOA: design pattern', 'Strategy: architectural style. Event-driven: design pattern'], 1, 'Factory, Observer, Strategy adalah design pattern. Layered, SOA, Microservices, Event-Driven adalah architectural style. MVC adalah architectural pattern.']
+  ] },
+  bo4: { t: 'Pemodelan Sistem (DFD & UML)', k: 'Simbol DFD (process, external entity, data store), context diagram (level 0), data dictionary, use case diagram, dan activity diagram.', q: [
+    ['Pada DFD, simbol process menandakan...', ['Tempat data disimpan', 'Pihak luar yang memberi atau menerima data', 'Transformasi data: kegiatan yang mengubah data masuk menjadi data keluar', 'Arah perpindahan data'], 2, 'Kisi-kisi: simbol process menandakan transformasi data.'],
+    ['Pihak di luar sistem yang memberi data ke sistem atau menerima data darinya disebut...', ['Process', 'External entity', 'Data store', 'Data flow'], 1, 'Contoh: Mahasiswa pada sistem akademik.'],
+    ['Simbol data store pada DFD menggambarkan...', ['Tempat data disimpan untuk dipakai lagi', 'Pengguna sistem', 'Proses perhitungan', 'Sambungan jaringan'], 0, 'Digambar dua garis sejajar.'],
+    ['Context diagram adalah nama lain dari...', ['DFD Level 0', 'DFD Level 1', 'Class diagram', 'Activity diagram'], 0, 'Gambaran umum: entitas eksternal dan sistem sebagai satu proses.'],
+    ['Context diagram menampilkan rincian subproses di dalam sistem.', false, 'Di level 0 sistem digambar sebagai satu proses. Rinciannya baru muncul di level 1 dan seterusnya.'],
+    ['Dua pertanyaan yang dijawab DFD Level 0 adalah...', ['Apa sistemnya, dan siapa yang berinteraksi dengannya', 'Tabel apa yang dipakai, dan indeksnya apa', 'Bahasa apa yang dipakai, dan framework-nya apa', 'Berapa biayanya, dan berapa lama pembuatannya'], 0, 'Fokus level 0 dari slide.'],
+    ['Data dictionary (kamus data) berfungsi untuk...', ['Menerjemahkan antarmuka ke bahasa lain', 'Mendefinisikan elemen data: nama, tipe, format, arti, dan aturan pakainya', 'Menyimpan data cadangan', 'Menggambar aliran data'], 1, 'Supaya analis, programmer, dan pengguna mengartikan data dengan cara yang sama.'],
+    ['Semakin tinggi nomor level DFD, diagramnya semakin rinci dan semakin dekat ke implementasi.', true, 'Makin banyak proses yang ditampilkan.'],
+    ['Use case diagram menggambarkan...', ['Urutan pesan antar objek berdasarkan waktu', 'Interaksi antara aktor dan fungsi yang disediakan sistem', 'Aliran aktivitas beserta percabangannya', 'Struktur tabel database'], 1, 'Menjawab: siapa bisa melakukan apa.'],
+    ['Activity diagram paling tepat dipakai untuk menggambarkan...', ['Siapa saja pengguna sistem', 'Aliran aktivitas atau proses bisnis, termasuk urutan dan percabangannya', 'Atribut dan method sebuah kelas', 'Susunan server dan jaringan'], 1, 'Kisi-kisi: activity diagram untuk aliran aktivitas atau proses bisnis.'],
+    ['Kamu ingin menunjukkan bahwa setelah pesanan dibayar ada pemeriksaan stok, lalu alurnya bercabang menjadi "kirim" atau "batalkan". Diagram yang paling tepat adalah...', ['Use case diagram', 'Activity diagram', 'Context diagram', 'Data dictionary'], 1, 'Ada urutan langkah dan percabangan (decision).'],
+    ['Use case diagram adalah model paling high level di UML, tetapi integrasi antar sistem belum termodelkan di dalamnya.', true, 'Dua pernyataan ini sama-sama ada di slide.']
+  ] },
+  bo5: { t: 'Smart System & Event-Driven', k: 'Tahapan smart system (sensing, processing, understanding, acting) dan pola komunikasi event-driven architecture (event dan broker).', q: [
+    ['Urutan tahapan smart system menurut kisi-kisi adalah...', ['Sensing, Understanding, Processing, Acting', 'Processing, Sensing, Acting, Understanding', 'Sensing, Processing, Understanding, Acting', 'Understanding, Sensing, Processing, Acting'], 2, 'Merasakan, mengolah, memahami, lalu bertindak.'],
+    ['Sensor kelembapan tanah membaca angka 18%. Ini tahap...', ['Sensing', 'Processing', 'Understanding', 'Acting'], 0, 'Mengambil data dari lingkungan lewat sensor.'],
+    ['Sistem merata-rata 60 bacaan sensor per menit dan membuang bacaan yang rusak. Ini tahap...', ['Sensing', 'Processing', 'Understanding', 'Acting'], 1, 'Mengolah data mentah supaya siap dipahami.'],
+    ['Sistem menyimpulkan "tanah terlalu kering untuk tanaman cabai". Ini tahap...', ['Sensing', 'Processing', 'Understanding', 'Acting'], 2, 'Memberi makna pada data yang sudah diolah.'],
+    ['Pompa air menyala otomatis selama 5 menit. Ini tahap...', ['Sensing', 'Processing', 'Understanding', 'Acting'], 3, 'Bertindak ke lingkungan.'],
+    ['Smart system adalah sistem yang berdiri sendiri dan tidak bisa digabungkan dengan sistem lain.', false, 'Smart system adalah lapisan kecerdasan yang bisa diintegrasikan ke berbagai sistem. Gabungannya disebut system of systems.'],
+    ['Pada event-driven architecture, komponen berkomunikasi...', ['Dengan saling memanggil fungsi secara langsung', 'Melalui event yang dikirim lewat broker', 'Dengan membaca database yang sama', 'Lewat berkas yang disalin tiap malam'], 1, 'Polanya publish and subscribe dengan event broker.'],
+    ['Peran event broker adalah...', ['Menyimpan seluruh data aplikasi', 'Menerima event dari publisher dan meneruskannya ke subscriber yang berlangganan', 'Menjalankan logika bisnis utama', 'Menampilkan antarmuka pengguna'], 1, 'Karena ada broker, publisher dan subscriber terpisah (decoupled).'],
+    ['Pada event-driven, publisher harus mengetahui alamat semua subscriber-nya.', false, 'Publisher tidak perlu tahu siapa subscriber-nya. Keduanya hanya mengenal broker.'],
+    ['Satu event dapat dikonsumsi oleh banyak subscriber sekaligus.', true, 'Dan banyak publisher dapat mengirim event ke broker yang sama.'],
+    ['Keuntungan event-driven dibanding bertanya berulang-ulang "ada data baru?" (polling) adalah...', ['Sistem bereaksi saat event terjadi, tanpa perlu bertanya terus-menerus', 'Data selalu lebih kecil ukurannya', 'Tidak membutuhkan jaringan', 'Tidak membutuhkan broker'], 0, 'Slide: sistem bereaksi ketika sebuah event terjadi, tidak perlu polling terus-menerus.']
+  ] },
+  bo6: { t: 'SOA & Microservices Architecture', k: 'Prinsip SOA, taxonomy layanan, service registry, keunggulan microservices (loose coupling, fault isolation, independent deployment), granularity, dan API monetization.', q: [
+    ['Pada SOA, service-service saling berkomunikasi melalui...', ['Enterprise Service Bus (ESB)', 'Satu database bersama', 'Berkas CSV', 'Pemanggilan fungsi langsung'], 0, 'SOA membangun sistem dari shared services yang terhubung lewat ESB.'],
+    ['Manakah yang BUKAN tujuan SOA?', ['Integrasi sistem enterprise', 'Reuse layanan', 'Menyatukan semua fungsi ke dalam satu unit deployment', 'Mengurangi ketergantungan antar aplikasi'], 2, 'Menyatukan semua fungsi dalam satu unit adalah ciri monolitik.'],
+    ['Pada SOA taxonomy, layanan yang menyediakan dukungan teknis seperti autentikasi, audit, dan logging disebut...', ['Business services', 'Enterprise services', 'Application services', 'Infrastructure services'], 3, 'Business mendefinisikan kebutuhan, enterprise mengimplementasikan, application khusus satu aplikasi, infrastructure memberi dukungan teknis.'],
+    ['Lapisan pada SOA yang mengorkestrasi beberapa service menjadi satu proses bisnis adalah...', ['Operational Systems', 'Service Components', 'Business Process Layer', 'Governance'], 2, 'Lapisan 4. Contoh: proses registrasi mahasiswa yang memanggil beberapa service berurutan.'],
+    ['Fungsi service registry adalah...', ['Menyimpan data transaksi pelanggan', 'Menjadi tempat layanan mendaftarkan diri sehingga layanan lain bisa menemukannya', 'Mengenkripsi pesan antar layanan', 'Menggantikan API'], 1, 'Kisi-kisi: service registry untuk menemukan layanan.'],
+    ['Dengan service registry, pemanggil cukup mengetahui nama layanan dan tidak perlu menyimpan alamat tetapnya.', true, 'Alamat boleh berubah, layanan boleh ditambah atau diganti, pemanggil tidak perlu diubah.'],
+    ['Kelemahan modul Rules terpusat pada SOA adalah...', ['Aturan bisnis menjadi tidak konsisten', 'Menjadi shared dependency dan berpotensi single point of failure', 'Tidak bisa dipakai lebih dari satu service', 'Membuat tiap service punya database sendiri'], 1, 'Jika modul Rules gagal, banyak service terdampak.'],
+    ['Loosely coupled berarti...', ['Semua layanan berbagi satu database supaya datanya konsisten', 'Layanan terisolasi dan hanya berkomunikasi lewat API contract, tanpa berbagi database', 'Layanan saling memanggil fungsi internal satu sama lain', 'Semua layanan harus dirilis bersamaan'], 1, 'Rumusan kisi-kisi untuk Essay 1.'],
+    ['Independently deployable berarti pembaruan satu layanan dapat dirilis tanpa membutuhkan deployment ulang modul lain.', true, 'Rumusan kisi-kisi.'],
+    ['Layanan pembayaran mati, tetapi pembeli masih bisa melihat katalog dan mengisi keranjang. Keunggulan microservices yang terlihat adalah...', ['Targeted scalability', 'Fault isolation', 'API monetization', 'Coarse-grained service'], 1, 'Kegagalan satu service tidak meruntuhkan service lain.'],
+    ['Database-per-service berarti...', ['Semua service memakai satu database besar', 'Tiap service memegang databasenya sendiri dan tidak berbagi tabel dengan service lain', 'Tiap tabel disimpan di server berbeda', 'Database hanya boleh diakses lewat ESB'], 1, 'Salah satu karakteristik microservices di kisi-kisi.'],
+    ['Perbedaan utama SOA dan microservices menurut slide terletak pada...', ['Bahasa pemrograman yang dipakai', 'Tingkat granularitas layanan', 'Jenis database', 'Jumlah pengguna'], 1, 'SOA coarse-grained, microservices fine-grained.'],
+    ['Makin halus (fine-grained) pemecahan service, sistem pasti makin efisien.', false, 'Layanan yang terlalu spesifik bisa membuat sistem tidak lebih efisien daripada monolitik maupun SOA, karena terlalu banyak API call.'],
+    ['Penyedia API memberi 5.000 panggilan gratis per bulan, lalu mengenakan biaya untuk selebihnya. Model monetisasinya adalah...', ['Pay-per-call', 'Subscription', 'Freemium', 'Revenue share'], 2, 'Dasar gratis sampai batas tertentu, lanjutan berbayar.'],
+    ['Pasangan model monetisasi dan cirinya yang benar adalah...', ['Subscription: bayar setiap kali memanggil API', 'Pay-per-call: biaya bulanan tetap untuk kuota tertentu', 'Pay-per-call: bayar biaya kecil setiap kali memanggil API', 'Freemium: penyedia mengambil persentase tiap transaksi'], 2, 'Subscription adalah biaya tetap per periode. Persentase transaksi adalah revenue share.']
+  ] },
+  bo7: { t: 'Data Representation & Encoding', k: 'JSON vs XML, fungsi XML namespace, standar Unicode, code point, dan dampaknya terhadap performa aplikasi mobile dan jaringan.', q: [
+    ['Representasi data penting dalam integrasi karena...', ['Membuat database lebih besar', 'Menjadi format standar yang dipahami sistem-sistem yang berbeda platform', 'Menggantikan kebutuhan akan API', 'Hanya dibutuhkan untuk tampilan'], 1, 'Sistem heterogen tidak bisa saling membaca isi database. Data dibungkus dalam format yang disepakati.'],
+    ['Perbedaan struktur JSON dan XML adalah...', ['JSON berbasis tag, XML berbasis key-value', 'JSON berbasis key-value, XML berbasis tag dan bisa memakai atribut', 'Keduanya berbasis tabel', 'JSON biner, XML teks'], 1, 'Sisi "struktur" pada Essay 2.'],
+    ['Untuk data yang sama, payload JSON umumnya lebih kecil daripada XML karena...', ['JSON dikompresi otomatis', 'Pada XML nama tiap field ditulis dua kali, di tag pembuka dan tag penutup', 'JSON tidak menyimpan nama field', 'XML menyimpan gambar'], 1, 'Untuk nama field n huruf: XML butuh 2n + 5 byte, JSON butuh n + 3 byte.'],
+    ['Pada aplikasi mobile, payload yang lebih kecil membantu menghemat...', ['Hanya ruang simpan server', 'Bandwidth atau kuota, waktu tunggu (latency), dan kerja CPU serta baterai', 'Hanya jumlah baris kode', 'Jumlah tabel database'], 1, 'Lebih sedikit byte berarti lebih cepat dikirim dan lebih ringan diurai.'],
+    ['Mengurai (parsing) XML umumnya lebih berat bagi CPU perangkat mobile dibanding mengurai JSON.', true, 'XML harus mencocokkan tag pembuka dan penutup serta mengurus atribut dan namespace.'],
+    ['XML tetap unggul dibanding JSON dalam hal...', ['Ukuran payload yang paling kecil', 'Dukungan atribut, namespace, dan komentar', 'Kecepatan parsing di browser', 'Jumlah karakter yang paling sedikit'], 1, 'Karena itu XML masih dipakai pada web service SOAP dan dokumen resmi.'],
+    ['Fungsi XML namespace adalah...', ['Memperkecil ukuran dokumen', 'Membedakan elemen yang namanya sama tetapi berasal dari domain data yang berbeda', 'Mengenkripsi isi dokumen', 'Mengubah XML menjadi JSON'], 1, 'Mencegah konflik penamaan.'],
+    ['Namespace XML ditulis dengan...', ['Kurung kurawal dan tanda titik dua', 'Atribut xmlns berisi URI unik, yang bisa diberi prefix di depan nama elemen', 'Tanda pagar di awal baris', 'Kutip tunggal pada nama tag'], 1, 'Contoh: xmlns:nsb="http://bank.example/nasabah", lalu elemen ditulis nsb:id.'],
+    ['URI pada deklarasi namespace harus berupa alamat web yang bisa dibuka di browser.', false, 'URI hanya berfungsi sebagai pengenal unik. Program tidak membukanya.'],
+    ['Unicode adalah...', ['Cara memampatkan teks', 'Standar yang memberi satu nomor unik untuk setiap karakter dari semua bahasa', 'Encoding 7 bit berisi 128 karakter', 'Format pertukaran data seperti JSON'], 1, 'Nomor itu disebut code point.'],
+    ['Code point huruf A ditulis U+0041. Pernyataan yang benar adalah...', ['U+0041 adalah byte yang disimpan di berkas', 'U+0041 adalah nomor karakter di Unicode. Byte-nya bergantung pada encoding yang dipakai (UTF-8, UTF-16, UTF-32)', 'U+0041 hanya berlaku di UTF-8', 'U+0041 adalah nama font'], 1, 'Unicode memberi nomor, UTF menentukan cara menulis nomor itu sebagai byte.'],
+    ['Karakter ASCII memakai 1 byte di UTF-8 dengan nilai byte yang sama.', true, 'Karena itu teks ASCII otomatis UTF-8 yang sah. Karakter di luar ASCII memakai 2 sampai 4 byte.'],
+    ['Nama "José" ditulis dalam UTF-8 tetapi dibaca dengan encoding 1 byte per karakter sehingga tampil "JosÃ©". Gejala ini disebut...', ['Vendor lock-in', 'Mojibake akibat mismatch encoding', 'Fault isolation', 'Konflik namespace'], 1, 'Byte ditulis dengan satu aturan tetapi dibaca dengan aturan lain.']
+  ] }
+};
 
 </script>
 <script>
@@ -1470,6 +1724,7 @@ window.TST_GLOSS = [
       return D(640, 380, [n('cus', 320, 32, 'Customer', '#8FC5EA', C.b1), n('pro', 80, 130, 'Product', '#BFE3CF', C.good), n('sal', 320, 130, 'Sales', C.yel, '#B9B52E'), n('sto', 560, 130, 'Store', '#F5C6C0', C.bad), n('inv', 320, 236, 'Inventory', C.yt, '#B9B52E'), n('prm', 80, 262, 'Promotion', '#D9D0F0', '#8E6BBF'), n('ana', 80, 344, 'Analytics', '#BFE0E3', '#3C8C94')],
         [E('cus', 'sal', { t: 'U → D\nConformist', col: C.navy, dx: 52 }), E('pro', 'sal', { both: 1, t: 'U ↔ D\nCustomer / Supplier', col: C.navy, dy: 30 }), E('sal', 'sto', { both: 1, t: 'U ↔ D\nOHS / PL', col: C.navy, dy: 30 }), E('sal', 'inv', { t: 'U → D\nConformist', col: C.navy, dx: 52, dy: 6 }), E('pro', 'prm', { t: 'U → D\nACL', col: C.navy, dx: 36 }), E('prm', 'ana', { t: 'U → D\nConformist', col: C.navy, dx: 62 })]);
     },
+    x1op: () => D(660, 190, [N('u', 50, 60, 'Pembeli', { w: 80, h: 36, f: '#fff' }), N('o', 220, 60, 'Order Service', { w: 140, h: 44 }), N('p', 500, 60, 'Payment Service', Object.assign({ w: 150, h: 44 }, YEL)), N('do', 220, 155, 'DB pesanan', { sh: 'cyl', w: 110, h: 44, f: '#fff' }), N('dp', 500, 155, 'DB pembayaran', { sh: 'cyl', w: 120, h: 44, f: '#fff' })], [E('u', 'o', { t: '1. Bayar' }), { a: [290, 50], b: [425, 50], t: '3. POST /payments' }, { a: [425, 72], b: [290, 72], t: '5. berhasil', dash: 1 }, E('o', 'do', { both: 1, t: '2' }), E('p', 'dp', { both: 1, t: '4' })], { extra: '<text x="357" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="' + C.bad + '">API contract</text>' }),
     f4seq: () => D(660, 250, [N('k', 60, 26, 'Klien', { w: 90, h: 30, f: '#fff' }), N('s', 230, 26, 'Sales', Object.assign({ w: 100, h: 30 }, YEL)), N('c', 380, 26, 'Customer', { w: 100, h: 30 }), N('p', 500, 26, 'Product', { w: 90, h: 30 }), N('t', 610, 26, 'Store', { w: 80, h: 30 })],
       [[60, 0], [230, 0], [380, 0], [500, 0], [610, 0]].map(q => ({ a: [q[0], 42], b: [q[0], 244], noarrow: 1, dash: 1, col: C.line })).concat([
         { a: [60, 68], b: [230, 68], t: '1. GET /sales/1001' }, { a: [230, 104], b: [380, 104], t: '3. GET /customers/42' }, { a: [230, 140], b: [500, 140], t: '4. GET /products/7', lp: 0.72 }, { a: [230, 176], b: [610, 176], t: '5. GET /stores/3', lp: 0.8 }, { a: [230, 218], b: [60, 218], t: '6. JSON lengkap', dash: 1 }]), { extra: '<text x="238" y="88" font-size="10" fill="' + C.mute + '">2. baca sales_fact</text>' })
@@ -1506,8 +1761,13 @@ window.TST_GLOSS = [
   /* ---------- kerangka ---------- */
   function frame() {
     const tabs = $$('nav.tabs button');
+    const pkb = $$('.pkbar button');
     function showTab(id, push) {
-      if (!$('#tab-' + id)) id = 'pa';
+      if (!$('#tab-' + id)) id = 'bo1';
+      const cur = tabs.filter(b => b.dataset.tab === id)[0], pk = cur ? cur.dataset.pk : 'B';
+      tabs.forEach(b => { b.hidden = b.dataset.pk !== pk; });
+      pkb.forEach(b => b.classList.toggle('on', b.dataset.pk === pk));
+      store.set('ii3160.lpk' + pk, id);
       tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === id ? 'true' : 'false'));
       $$('.panel').forEach(p => p.classList.toggle('on', p.id === 'tab-' + id));
       if (push) { try { history.replaceState(null, '', '#' + id); } catch (e) { /* abaikan */ } window.scrollTo(0, 0); }
@@ -1515,14 +1775,15 @@ window.TST_GLOSS = [
     }
     LT.showTab = showTab;
     tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab, true)));
+    pkb.forEach(b => b.addEventListener('click', () => showTab(store.get('ii3160.lpk' + b.dataset.pk, b.dataset.pk === 'B' ? 'bo1' : 'pa'), true)));
     const done = store.get('ii3160.ldone', {}) || {};
     const soals = $$('.soal');
-    const label = id => id[0].toUpperCase() + id.slice(1);
+    const label = id => id[0] === 'x' ? 'Essay ' + id.slice(1) : 'A' + ('abcdef'.indexOf(id[0]) + 1) + '.' + id.slice(1);
     const LV = { k: ['Konsep', 'Menguji apakah kamu paham arti dan bisa membedakan istilah.'], a: ['Analisis', 'Menguji penerapan konsep pada sebuah kasus. Alasan lebih penting daripada jawaban akhirnya.'], i: ['Implementasi', 'Meminta kamu menulis, menghitung, atau merancang sesuatu yang konkret.'] };
     function refresh() {
       let n = 0;
       soals.forEach(s => { const d = !!done[s.id]; if (d) n++; s.classList.toggle('done', d); const a = $('.jump a[href="#' + s.id + '"]'); if (a) a.classList.toggle('done', d); });
-      $('#prog').textContent = n + ' dari ' + soals.length + ' soal selesai';
+      LT.uraian = n + ' dari ' + soals.length + ' soal uraian selesai'; LT.prog();
       tabs.forEach(b => { const p = $('#tab-' + b.dataset.tab), all = $$('.soal', p); if (!all.length) return; let sm = $('small', b); if (!sm) { sm = H('small'); b.appendChild(sm); } sm.textContent = all.filter(s => done[s.id]).length + '/' + all.length; });
     }
     soals.forEach(s => {
@@ -1559,8 +1820,44 @@ window.TST_GLOSS = [
       showTab(el.closest('.panel').id.slice(4)); setTimeout(() => el.scrollIntoView(), 30); return true;
     }
     window.addEventListener('hashchange', fromHash);
-    if (!fromHash()) showTab(store.get('ii3160.ltab', 'pa'));
+    if (!fromHash()) showTab(store.get('ii3160.ltab', 'bo1'));
     refresh();
+  }
+
+  LT.prog = function () { const p = $('#prog'); if (p) p.textContent = (LT.objektifTxt ? LT.objektifTxt + ' · ' : '') + (LT.uraian || ''); };
+  function objektif() {
+    const O = window.LB_OBJ, saved = store.get('ii3160.lobj', {}) || {}, stat = {};
+    const total = () => { let a = 0, c = 0, n = 0; Object.keys(stat).forEach(k => { a += stat[k].a; c += stat[k].c; n += stat[k].n; }); LT.objektifTxt = 'Objektif: ' + c + ' benar dari ' + a + ' terjawab (total ' + n + ')'; LT.prog(); };
+    $$('.obj').forEach((box, bi) => {
+      const key = box.dataset.o, def = O[key], st = stat[key] = { a: 0, c: 0, n: def.q.length };
+      const tabBtn = $('nav.tabs button[data-tab="' + key + '"]');
+      function upd() { $('.oa', box).textContent = st.a; $('.oc', box).textContent = st.c; $('.bar i', box).style.width = (st.a / st.n * 100) + '%'; let sm = $('small', tabBtn); if (!sm) { sm = H('small'); tabBtn.appendChild(sm); } sm.textContent = st.a + '/' + st.n; const v = $('.verdict', box); v.innerHTML = st.a === st.n ? (st.c === st.n ? '<b class="good">Sempurna.</b> Topik ini sudah kamu kuasai.' : st.c >= st.n * 0.8 ? '<b class="good">Bagus.</b> Baca lagi penjelasan soal yang salah.' : 'Skor di bawah 80%. Buka lagi <a href="catatan-uts-tst.html#k' + (bi + 1) + '">tab ' + (bi + 1) + ' di catatan</a>, lalu tekan Ulangi.') : ''; total(); }
+      function build() {
+        st.a = 0; st.c = 0;
+        box.innerHTML = '<div class="ohead"><h2>B' + (bi + 1) + '. ' + esc(def.t) + '</h2><p class="small muted" style="margin:.2em 0 .6em"><b>Kisi-kisi:</b> ' + esc(def.k) + '</p><div class="ctl"><span class="small">Terjawab <b class="oa">0</b> dari <b>' + st.n + '</b></span><span class="small">Benar <b class="oc">0</b></span><button class="btn" type="button" style="margin-left:auto">Ulangi topik ini</button></div><div class="bar"><i></i></div><div class="small verdict"></div></div>';
+        $('.ohead button', box).addEventListener('click', () => { def.q.forEach((_, i) => { delete saved[key + '.' + i]; }); store.set('ii3160.lobj', saved); build(); });
+        def.q.forEach((it, i) => {
+          const tf = typeof it[1] === 'boolean', qid = key + '.' + i, why = tf ? it[2] : it[3], right = tf ? (it[1] ? 'Benar' : 'Salah') : it[1][it[2]];
+          let opts = tf ? ['Benar', 'Salah'] : it[1].slice();
+          if (!tf) for (let k = opts.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); const t = opts[k]; opts[k] = opts[j]; opts[j] = t; }
+          const q = H('div', { class: 'mcq' + (tf ? ' tf' : ''), 'data-q': qid }, '<span class="kind">' + (tf ? 'Benar atau salah' : 'Pilihan ganda') + '</span><p><b>' + (i + 1) + '.</b> ' + esc(it[0]) + '</p><div class="opts"></div><div class="why" hidden></div>');
+          const wrap = $('.opts', q), wy = $('.why', q);
+          function answer(txt, save) {
+            const ok = txt === right; st.a++; if (ok) st.c++;
+            $$('button', wrap).forEach(b => { b.disabled = true; if (b.dataset.v === right) b.classList.add('right'); else if (b.dataset.v === txt) b.classList.add('wrong'); });
+            q.classList.add(ok ? 'ok' : 'no'); wy.hidden = false;
+            wy.innerHTML = (ok ? '<b class="good">Tepat.</b> ' : '<b class="bad">Belum tepat.</b> Jawabannya: <b>' + esc(right) + '</b>. ') + esc(why);
+            if (T.glossReady) T.gloss([wy]);
+            if (save) { saved[qid] = txt; store.set('ii3160.lobj', saved); }
+          }
+          opts.forEach((o, j) => { const b = H('button', { type: 'button' }, (tf ? '' : '<b>' + 'ABCD'[j] + '.</b> ') + esc(o)); b.dataset.v = o; b.addEventListener('click', () => { if (b.disabled) return; answer(o, true); upd(); }); wrap.appendChild(b); });
+          box.appendChild(q);
+          if (saved[qid] !== undefined && opts.indexOf(saved[qid]) >= 0) answer(saved[qid], false);
+        });
+        upd();
+      }
+      build();
+    });
   }
 
   function kilat() {
@@ -1620,7 +1917,7 @@ window.TST_GLOSS = [
   }
 
   $$('[data-f]').forEach(el => { const f = F[el.getAttribute('data-f')]; if (f) el.innerHTML = f(); else el.setAttribute('data-missing', '1'); });
-  frame(); kilat(); tool();
+  objektif(); frame(); kilat(); tool();
   T.gloss('.soal .ctx, .soal .qt, .soal .ans .in');
   T.tips();
 })();
